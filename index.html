@@ -58,6 +58,20 @@ main{padding-block:28px 64px;display:grid;gap:40px}
 .ind:hover{border-color:var(--solved)}
 .ind .n{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
 .ind.thin .n::after{content:" · thin";color:var(--risk)}
+.ind.any{background:var(--solved-soft);border-color:var(--solved);font-weight:600}
+.ind.any .n{color:var(--ink)}
+.ind-grid.clamped .ind:nth-child(n+10):not(.any){display:none}
+.more{justify-self:start}
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:20px}
+.rail{display:grid;gap:16px;align-content:start}
+.jump details{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:12px 14px}
+.jump details+details{margin-top:10px}
+.jump summary{cursor:pointer;font:600 13px var(--body);color:var(--muted)}
+.jump ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:1px}
+.jump li.g{margin-top:8px}
+.jump a{display:block;padding:5px 0;color:var(--ink);text-decoration:none;font-size:14px;line-height:1.3}
+.jump a:hover{color:var(--solved)}
+.jump a[aria-current="page"]{color:var(--solved);font-weight:600}
 .groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
 .group{display:grid;gap:8px;align-content:start}
 .group ul{list-style:none;padding:0;margin:0;display:grid;gap:2px}
@@ -182,6 +196,14 @@ function applyF(list){
   return r;
 }
 const opt=(obj,sel,all)=>`<option value="">${all}</option>`+Object.entries(obj).map(([k,v])=>`<option value="${k}"${sel===k?' selected':''}>${esc(v)}</option>`).join('');
+function jumpNav(cur){
+  const li=(h,label,on)=>`<li><a href="${h}"${on?' aria-current="page"':''}>${esc(label)}</a></li>`;
+  const inds=INDUSTRIES.map(([k,v])=>li(`#i-${k}`,v,cur===`i-${k}`)).join('');
+  const cats=GROUPS.map(([g,cs])=>`<li class="g"><span class="eyebrow">${esc(g)}</span></li>`+cs.map(([k,v])=>li(`#c-${k}`,v,cur===`c-${k}`)).join('')).join('');
+  return `<nav class="jump" aria-label="Browse everything">
+    <details open><summary>All industries</summary><ul>${inds}</ul></details>
+    <details><summary>All categories</summary><ul>${cats}</ul></details></nav>`;
+}
 function filterBar(lockInd){
   const indOpts=Object.fromEntries(INDUSTRIES);
   const srcs=[...new Set(C.map(c=>c.src))].sort();
@@ -226,7 +248,7 @@ function wireNews(pre){
   $("#nl-form").onsubmit=e=>{e.preventDefault();const m=$("#nl-msg");m.className="ok";m.textContent=`Prototype only: signup isn't connected yet. This would subscribe ${$("#nl-email").value} to ${picked.size?[...picked].map(k=>IND[k]).join(", "):"every industry"}.`;};
 }
 function home(){
-  const indTiles=INDUSTRIES.map(([k,v])=>{const n=count(c=>c.ind.includes(k));return `<a class="ind${n<1?' thin':''}" href="#i-${k}"><span>${esc(v)}</span><span class="n">${n}</span></a>`;}).join('');
+  const indTiles=INDUSTRIES.map(([k,v])=>{const n=count(c=>c.ind.includes(k));return `<a class="ind${k==="cross-industry"?' any':''}${n<1?' thin':''}" href="#i-${k}"><span>${esc(v)}</span><span class="n">${n}</span></a>`;}).join('');
   const groups=GROUPS.map(([g,cats])=>`<div class="group"><span class="eyebrow">${g}</span><ul>${cats.map(([k,v])=>`<li><a href="#c-${k}">${esc(v)}<span>${count(c=>c.cat===k)}</span></a></li>`).join('')}</ul></div>`).join('');
   const newest=[...C].sort((a,b)=>b.added.localeCompare(a.added)).slice(0,6);
   const easy=C.filter(c=>c.eff===1&&c.risk.length<=1).slice(0,6);
@@ -236,12 +258,14 @@ function home(){
     <p>Real examples of people handing work to AI agents, with what it took to set up, what it can touch, and whether it worked.</p>
     <form class="search" id="hs"><input id="hs-q" type="search" placeholder="Try invoices, appointments, SEO…" aria-label="Search cases"><button class="btn" type="submit">Search</button></form>
   </section>
-  <section class="sec" id="industries"><div class="sec-head"><h2>Browse by industry</h2><p>Cases that only apply to your field, then the ones that work anywhere.</p></div><div class="ind-grid">${indTiles}</div></section>
-  <section class="sec" id="categories"><div class="sec-head"><h2>Browse by category</h2></div><div class="groups">${groups}</div></section>
+  <section class="sec" id="industries"><div class="sec-head"><h2>Browse by industry</h2><p>Cases that only apply to your field, then the ones that work anywhere.</p></div><div class="ind-grid clamped" id="ind-grid">${indTiles}</div><button type="button" class="btn ghost more" id="ind-more" aria-expanded="false">Show all ${INDUSTRIES.length} industries</button></section>
+  <section class="sec" id="categories"><div class="sec-head"><h2>Browse by category</h2></div><div class="panel"><div class="groups">${groups}</div></div></section>
   <section class="sec"><div class="sec-head"><h2>New this week</h2><a href="#all">All cases</a></div><div class="cards">${newest.map(card).join('')}</div></section>
   <section class="sec"><div class="sec-head"><h2>Easy wins</h2><p>Under 15 minutes to try, with little or no risk.</p></div><div class="cards">${easy.map(card).join('')}</div></section>
   ${newsletter()}`;
   $("#hs").onsubmit=e=>{e.preventDefault();resetF({q:$("#hs-q").value.trim()});location.hash="all";};
+  const ig=$("#ind-grid"),im=$("#ind-more");
+  im.onclick=()=>{const open=!ig.classList.toggle("clamped");im.setAttribute("aria-expanded",open);im.textContent=open?"Show fewer industries":`Show all ${INDUSTRIES.length} industries`;};
   wireNews();
 }
 function listPage(kind,key){
@@ -257,7 +281,7 @@ function listPage(kind,key){
       <span class="eyebrow">Industry</span><h1>Solved with AI in ${esc(IND[key])}</h1>
       <p>${own.length} case${own.length===1?'':'s'} from this industry${catsHere.length?`, across ${catsHere.length} categor${catsHere.length===1?'y':'ies'}`:''}. <a href="#nl" id="nl-jump">Get this industry's newsletter</a></p>
       ${catsHere.length?`<div class="chips">${catsHere.map(k=>`<a class="chip" href="#c-${k}">${esc(CATS[k])}</a>`).join('')}</div>`:''}</div>`;
-    $("#app").innerHTML=`${head}<div class="layout">${filterBar(true)}<div><div id="list"></div>
+    $("#app").innerHTML=`${head}<div class="layout"><div class="rail">${filterBar(true)}${jumpNav("i-"+key)}</div><div><div id="list"></div>
       ${anyInd.length?`<section class="sec" style="margin-top:32px"><div class="sec-head"><h2>Also works in any industry</h2><p>Same kinds of jobs, from other fields.</p></div><div class="cards">${anyInd.slice(0,6).map(card).join('')}</div></section>`:''}
       </div></div>${newsletter()}`;
     wireList(base,true,{});wireNews(key==="cross-industry"?null:key);return;
@@ -274,7 +298,7 @@ function listPage(kind,key){
     head=`<div class="pagehead"><div class="crumbs"><a href="#home">Home</a></div><h1>All cases</h1>${F.q?`<p>Searching for “${esc(F.q)}”. <a href="#all" id="clr-q">Clear search</a></p>`:''}</div>`;
     keep={};
   }
-  $("#app").innerHTML=`${head}<div class="layout">${filterBar(lockInd)}<div id="list"></div></div>`;
+  $("#app").innerHTML=`${head}<div class="layout"><div class="rail">${filterBar(lockInd)}${jumpNav(kind==="c"?"c-"+key:"")}</div><div id="list"></div></div>`;
   const q=$("#clr-q");if(q)q.onclick=e=>{e.preventDefault();F.q="";route();};
   wireList(base,lockInd,keep);
 }
@@ -303,6 +327,7 @@ function casePage(c){
       <dt>Posted</dt><dd>${fmtDate(c.posted)}</dd>
       <dt>Added</dt><dd>${fmtDate(c.added)}</dd></dl>
       <p class="note">Original link is added during tagging.</p></div>
+    ${jumpNav("i-"+c.ind[0])}
   </aside></div>
   ${related.length?`<section class="sec"><h2>Related cases</h2><div class="cards">${related.map(card).join('')}</div></section>`:''}`;
   $("#copy").onclick=async()=>{const t=$("#tp").textContent;try{await navigator.clipboard.writeText(t);$("#copy").textContent="Copied";}catch(e){const r=document.createRange();r.selectNodeContents($("#tp"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("#copy").textContent="Selected: press Ctrl+C";}};
