@@ -176,7 +176,10 @@ function casePageHTML(c){
     <section class="sec"><h2>What they did</h2><p>${esc(c.did)}</p></section>
     <section class="sec"><h2>How it went</h2><p>${esc(c.how)}</p></section>
     ${ourRead(c)}
-    <section class="sec"><h2>Try it</h2><pre class="prompt" id="tp">${esc(promptFor(c))}</pre><div><button class="btn ghost" id="copy">Copy prompt</button></div></section>
+    <section class="sec">
+      <div class="sec-head"><h2>Try it</h2><button class="btn ghost" id="copy">Copy prompt</button></div>
+      <p class="note">A starting prompt we build from this case. Not the original poster's wording.</p>
+      <pre class="prompt" id="tp">${esc(promptFor(c))}</pre></section>
   </article>
   <aside class="side">
     <div class="box"><h3>Setup</h3><dl>

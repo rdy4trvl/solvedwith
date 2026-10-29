@@ -32,9 +32,12 @@
     <div><h3>Where it falls down</h3><ul><li>A fix that stops the error is not always the right fix; it can mask the cause instead.</li><li>Review quality drops when plausible-looking PRs arrive steadily.</li><li>It only sees errors Sentry caught, so silent failures stay untouched.</li></ul></div>
     <div><h3>Worth trying next</h3><ul><li>Require a failing test in the PR that the fix makes pass.</li><li>Track how many of these PRs are later reverted.</li></ul></div>
   </section>
-    <section class="sec"><h2>Try it</h2><pre class="prompt" id="tp">I work in saas &amp; technology and want to turn bug reports into fix pull requests.
+    <section class="sec">
+      <div class="sec-head"><h2>Try it</h2><button class="btn ghost" id="copy">Copy prompt</button></div>
+      <p class="note">A starting prompt we build from this case. Not the original poster's wording.</p>
+      <pre class="prompt" id="tp">I work in saas &amp; technology and want to turn bug reports into fix pull requests.
 Walk me through setting this up with Cursor, step by step.
-Before anything that runs code on your machine, stop and ask me first.</pre><div><button class="btn ghost" id="copy">Copy prompt</button></div></section>
+Before anything that runs code on your machine, stop and ask me first.</pre></section>
   </article>
   <aside class="side">
     <div class="box"><h3>Setup</h3><dl>

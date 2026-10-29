@@ -132,6 +132,7 @@ main{padding-block:28px 64px;display:grid;gap:40px}
 .read h3{margin-top:2px}
 .read ul{margin:6px 0 0;padding-left:20px;display:grid;gap:6px}
 .read li{max-width:65ch}
+.sec-head .btn{align-self:center}
 .prompt{font:13px/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;white-space:pre-wrap;margin:0}
 .news{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px}
 .news .row{display:flex;gap:8px;flex-wrap:wrap}

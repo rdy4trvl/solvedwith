@@ -44,7 +44,10 @@
    "Require a second identifier, such as date of birth, before any refill is submitted.",
    "Log every call where the match was low-confidence and review those weekly rather than sampling at random."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "real-estate-site-visits",
@@ -91,7 +94,10 @@
    "Hold slots provisionally and confirm only once the lead replies.",
    "Compare no-show rates against manually booked viewings to see whether speed costs quality."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "reconcile-supplier-invoices",
@@ -141,7 +147,10 @@
    "Hold any order above a value threshold for a person to release.",
    "Reconcile against the bank feed monthly to catch silent mismatches."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "dealership-sms-support",
@@ -187,7 +196,10 @@
    "Sample closed conversations weekly and measure how many should have been escalated.",
    "Route on safety and legal keywords regardless of what the sentiment score says."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "screen-job-candidates",
@@ -233,7 +245,10 @@
    "Keep every score with the reasoning behind it, so a rejected candidate's file can be audited.",
    "Run it alongside human screening for a month and compare who each would have advanced."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "teacher-report-marking",
@@ -278,7 +293,10 @@
    "Re-mark a sample blind and measure how far the scores drift.",
    "Ask for the rubric line behind every mark, so a disagreement can be traced."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "split-homework-scans",
@@ -324,7 +342,10 @@
    "Flag low-confidence name matches for a quick visual check instead of filing them.",
    "Reconcile the tracker against the scanned page count to catch anything dropped."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "redline-word-tracked-changes",
@@ -368,7 +389,10 @@
    "Ask separately what it chose not to change, and why.",
    "Check the output against the firm's precedent clauses rather than judging the edit on its own."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "hospital-bill-medicare-analysis",
@@ -412,7 +436,10 @@
    "Spot-check a sample of codes against the published fee schedule before relying on the table.",
    "Ask which charges are most often reduced in negotiation, not only where the gap is largest."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "us-taxes-from-1099s",
@@ -459,7 +486,10 @@
    "Have it show the calculation line by line so each figure can be checked against the form.",
    "Run last year's return, where the answer is already known, as a test."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "meta-ad-campaigns-newsletter",
@@ -507,7 +537,10 @@
    "Set the hard spend cap at the ad account level, not inside the agent.",
    "Hold creative for review before it goes live; the cost is a short delay."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "technical-seo-code-fixes",
@@ -550,7 +583,10 @@
    "Run it against a site whose problems you already know, to measure what it misses.",
    "Apply fixes in small batches so any ranking change can be attributed."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "reorder-low-stock",
@@ -597,7 +633,10 @@
    "Hold orders above a value for release and let the rest go.",
    "Track stock turn alongside stockouts, so the fix is not simply more inventory."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "freshdesk-support-tickets",
@@ -642,7 +681,10 @@
    "Let it answer only the ticket types where it scored well, and stay silent on the rest.",
    "Measure how much drafts are edited before sending, to see where it actually helps."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "gorgias-support-disabled",
@@ -687,7 +729,10 @@
    "Ground every answer in the policy documents and refuse anything they do not cover.",
    "Start in draft mode and enable sending only for question types with a clean record."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "contractor-back-office",
@@ -731,7 +776,10 @@
    "Run it over closed jobs where the problems are already known, to see what it misses.",
    "Have it report expiring certificates on a schedule rather than only when asked."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "monday-to-xero",
@@ -778,7 +826,10 @@
    "Hold the first invoice to each new client for a person to release.",
    "Reconcile created documents against monday statuses weekly to catch false matches."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "bookkeeping-firm-workflows",
@@ -824,7 +875,10 @@
    "Measure rework time too, since hours saved upstream can reappear as corrections.",
    "Keep credentials separated per client so one failure does not expose the rest."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "sentry-to-fix-prs",
@@ -869,7 +923,10 @@
    "Require a failing test in the PR that the fix makes pass.",
    "Track how many of these PRs are later reverted."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "cms-to-markdown-migration",
@@ -915,7 +972,10 @@
    "Diff the rendered pages before and after, rather than reviewing the code changes.",
    "Check that every old URL still resolves; migrations are where link equity is lost."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "hard-to-get-restaurant-table",
@@ -958,7 +1018,10 @@
    "Have it alert you when a slot opens instead of confirming outright.",
    "Set the acceptable time window narrowly so it cannot book something you will not use."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "vc-founder-screening",
@@ -1004,7 +1067,10 @@
    "Keep a log of the founders it screened out and review it quarterly for misses.",
    "Hold the first message for a person while the hit rate is still unproven."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "anker-voice-support",
@@ -1051,7 +1117,10 @@
    "Publish containment and escalation rates per language rather than one blended number.",
    "Cap the value of a return the agent can start on its own."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "post-meeting-follow-ups",
@@ -1095,7 +1164,10 @@
    "Post the action items to the organiser as a draft first.",
    "Measure how many items get edited or deleted after posting."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "cancer-patient-care-coordinator",
@@ -1139,7 +1211,10 @@
    "Treat every flag as a question for the care team, never as an instruction.",
    "Have it cite the document and line behind each flag so a clinician can check it quickly."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "international-grants-airtable",
@@ -1184,7 +1259,10 @@
    "Record where each grant was found, so sources that never yield can be dropped.",
    "Check the deadline on write and discard anything already closed."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "insurance-appeal-evidence",
@@ -1230,7 +1308,10 @@
    "Ask it to quote the exact policy wording behind each argument, so the reading can be checked.",
    "Have it name the weakest point and what evidence would strengthen it before you file."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  },
  {
   "id": "safety-data-sheet-retrieval",
@@ -1274,6 +1355,9 @@
    "Capture the revision date and source URL with every sheet, and re-check on a schedule.",
    "Validate the parsed schema against a set of known-good sheets before trusting it."
   ],
-  "evaluated": "2026-10-28"
+  "evaluated": "2026-10-28",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  }
 ]

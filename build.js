@@ -12,7 +12,13 @@ const STATIC_LIST_CAP = 60;
 const site = require("./assets/site.js");
 const { setCases, setFilter, homeHTML, listPageHTML, casePageHTML, INDUSTRIES, GROUPS, CATS, IND, U, esc } = site;
 
-const cases = JSON.parse(fs.readFileSync("data/cases.json", "utf8"));
+// Phase 1a: drafts still publish so the samples stay live. At go-live set this
+// to false and only cases Doug approved in the review queue will ship.
+const PUBLISH_DRAFTS = true;
+
+const all = JSON.parse(fs.readFileSync("data/cases.json", "utf8"));
+const cases = PUBLISH_DRAFTS ? all : all.filter(c => c.status === "approved");
+if (cases.length !== all.length) console.log(`${all.length - cases.length} unapproved cases held back`);
 setCases(cases);
 
 const clip = (s, n = 155) => {
@@ -49,6 +55,12 @@ function shell({ title, desc, url, page, key = "", body, js = true }) {
 ${js ? '<script src="/assets/site.js"></script>' : ""}
 </body></html>
 `;
+}
+
+// Generated output is rebuilt from scratch: a rejected or renamed case must not
+// leave its old page behind, still served and still in search results.
+for (const dir of ["case", "industry", "category", "all"]) {
+  fs.rmSync(dir, { recursive: true, force: true });
 }
 
 let written = 0;
