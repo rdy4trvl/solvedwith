@@ -1,20 +1,76 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SolvedWith.ai</title><meta name="description" content="Real AI agent use cases by industry: what it took, what it can touch, and whether it worked.">
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>SolvedWith.ai — what AI agents can do in your industry</title>
+<meta name="description" content="Real AI agent use cases with setup, results and risks. Browse by industry first, then by category.">
+<link rel="canonical" href="https://solvedwith.ai/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SolvedWith.ai">
+<meta property="og:title" content="SolvedWith.ai — what AI agents can do in your industry">
+<meta property="og:description" content="Real AI agent use cases with setup, results and risks. Browse by industry first, then by category.">
+<meta property="og:url" content="https://solvedwith.ai/">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
-</head><body>
+</head><body data-page="home">
 
 <div class="banner"><div class="wrap">Layout prototype · 28 sample cases summarized from the review · source badges, dates and links are placeholders until tagging</div></div>
 <header class="top"><div class="wrap">
-  <a class="logo" href="#home"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="var(--solved)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24" stroke-dasharray="125.7 25.1" transform="rotate(-12 32 32)"/><path d="M19 33.5 28.5 43 52 14"/></g></svg>SolvedWith<span class="tld">.ai</span></a>
-  <nav class="main"><a href="#industries">Industries</a><a href="#categories">Categories</a><a href="#all">All cases</a><a href="#newsletter">Newsletter</a></nav>
+  <a class="logo" href="/"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="var(--solved)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24" stroke-dasharray="125.7 25.1" transform="rotate(-12 32 32)"/><path d="M19 33.5 28.5 43 52 14"/></g></svg>SolvedWith<span class="tld">.ai</span></a>
+  <nav class="main"><a href="/#industries">Industries</a><a href="/#categories">Categories</a><a href="/all/">All cases</a><a href="/#newsletter">Newsletter</a></nav>
 </div></header>
-<div class="wrap"><main id="app"></main></div>
+<div class="wrap"><main id="app">
+  <section class="hero"><span class="eyebrow">28 real cases · 17 industries · 20 categories</span>
+    <h1>What AI agents can do in your industry</h1>
+    <p>Real use cases with setup, results and risks.</p>
+    <form class="search" id="hs"><input id="hs-q" type="search" placeholder="Try invoices, appointments, SEO…" aria-label="Search cases"><button class="btn" type="submit">Search</button></form>
+  </section>
+  <section class="sec" id="industries"><div class="sec-head"><h2>Browse by industry</h2><p>Cases that only apply to your field, then the ones that work anywhere.</p></div><div class="ind-grid scroller" id="ind-grid" tabindex="0" role="group" aria-label="All industries, scroll for more"><a class="ind" href="/industry/accounting/"><span>Accounting, tax &amp; bookkeeping</span><span class="n">4</span></a><a class="ind" href="/industry/financial-services/"><span>Banking &amp; financial services</span><span class="n">1</span></a><a class="ind" href="/industry/construction-trades/"><span>Construction &amp; trades</span><span class="n">1</span></a><a class="ind" href="/industry/education/"><span>Education</span><span class="n">2</span></a><a class="ind" href="/industry/government/"><span>Government &amp; public sector</span><span class="n">1</span></a><a class="ind" href="/industry/healthcare/"><span>Healthcare, clinics &amp; dental</span><span class="n">3</span></a><a class="ind" href="/industry/insurance/"><span>Insurance</span><span class="n">2</span></a><a class="ind" href="/industry/legal/"><span>Legal</span><span class="n">1</span></a><a class="ind" href="/industry/manufacturing/"><span>Manufacturing &amp; supply chain</span><span class="n">1</span></a><a class="ind" href="/industry/marketing-agencies/"><span>Marketing &amp; agencies</span><span class="n">2</span></a><a class="ind" href="/industry/media-publishing/"><span>Media &amp; publishing</span><span class="n">1</span></a><a class="ind" href="/industry/professional-services/"><span>Professional services &amp; consulting</span><span class="n">1</span></a><a class="ind" href="/industry/real-estate/"><span>Real estate &amp; property</span><span class="n">1</span></a><a class="ind" href="/industry/recruiting/"><span>Recruiting &amp; staffing</span><span class="n">1</span></a><a class="ind" href="/industry/restaurants-hospitality/"><span>Restaurants &amp; hospitality</span><span class="n">1</span></a><a class="ind" href="/industry/retail-ecommerce/"><span>Retail &amp; e-commerce</span><span class="n">5</span></a><a class="ind" href="/industry/saas-tech/"><span>SaaS &amp; technology</span><span class="n">4</span></a></div><div class="any-row"><a class="ind any" href="/industry/cross-industry/"><span>Works in any industry</span><span class="n">1</span></a></div></section>
+  <section class="sec" id="categories"><div class="sec-head"><h2>Browse by category</h2></div><div class="panel"><div class="groups"><div class="group"><span class="eyebrow">Personal Life</span><ul><li><a href="/category/hobbies/">Games &amp; Hobbies<span>0</span></a></li><li><a href="/category/health/">Health &amp; Fitness<span>1</span></a></li><li><a href="/category/home/">Home &amp; Family<span>0</span></a></li><li><a href="/category/career/">Jobs &amp; Career<span>0</span></a></li><li><a href="/category/money/">Money &amp; Investing<span>3</span></a></li><li><a href="/category/assistant/">Personal Assistant &amp; Paperwork<span>0</span></a></li><li><a href="/category/shopping/">Shopping &amp; Errands<span>0</span></a></li><li><a href="/category/travel/">Travel, Bookings &amp; Appointments<span>1</span></a></li></ul></div><div class="group"><span class="eyebrow">Business</span><ul><li><a href="/category/support/">Customer Support<span>5</span></a></li><li><a href="/category/finance/">Finance &amp; Bookkeeping<span>3</span></a></li><li><a href="/category/hr/">HR &amp; Recruiting<span>1</span></a></li><li><a href="/category/marketing/">Marketing, SEO &amp; Social<span>2</span></a></li><li><a href="/category/operations/">Operations &amp; Admin<span>5</span></a></li><li><a href="/category/sales/">Sales &amp; Lead Generation<span>2</span></a></li></ul></div><div class="group"><span class="eyebrow">Creative, Research & Learning</span><ul><li><a href="/category/content/">Content &amp; Media<span>0</span></a></li><li><a href="/category/research/">Research &amp; Knowledge<span>1</span></a></li><li><a href="/category/teaching/">Teaching &amp; Learning<span>2</span></a></li></ul></div><div class="group"><span class="eyebrow">Building & Tech</span><ul><li><a href="/category/agent-building/">Agent Building &amp; Orchestration<span>0</span></a></li><li><a href="/category/science/">Security, Science &amp; Hardware<span>0</span></a></li><li><a href="/category/software/">Software Development<span>2</span></a></li></ul></div></div></div></section>
+  <section class="sec"><div class="sec-head"><h2>New this week</h2><a href="/all/">All cases</a></div><div class="cards"><a class="card" href="/case/technical-seo-code-fixes/">
+    <div class="badges"><span class="b ind-b">Marketing &amp; agencies</span><span class="b out-Worked">Worked</span></div>
+    <h3>Find technical SEO problems and generate the fixes</h3><p>An SEO agent crawled a site, found broken canonicals and orphaned pages, ranked them, and wrote code fixes.</p>
+    <div class="badges"><span class="effort" title="Short setup"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span><span class="b">Short setup</span><span class="b safe">Low risk</span><span class="b">ChatGPT</span><span class="b">Blog</span></div>
+  </a><a class="card" href="/case/gorgias-support-disabled/">
+    <div class="badges"><span class="b ind-b">Retail &amp; e-commerce</span><span class="b out-Failed">Failed</span></div>
+    <h3>Handle store customer support with an AI agent</h3><p>A merchant ran Gorgias's AI agent for months, then switched it off.</p>
+    <div class="badges"><span class="effort" title="Short setup"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span><span class="b">Short setup</span><span class="b risk">1 risk</span><span class="b">Custom</span><span class="b">Reddit</span></div>
+  </a><a class="card" href="/case/pharmacy-refill-voice-agent/">
+    <div class="badges"><span class="b ind-b">Healthcare, clinics &amp; dental</span><span class="b out-Worked">Worked</span></div>
+    <h3>Handle pharmacy refill calls with a voice agent</h3><p>A pharmacy's phone agent identifies callers, submits refills, and routes renewal requests to prescribers.</p>
+    <div class="badges"><span class="effort" title="Developer build"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="b">Developer build</span><span class="b risk">2 risks</span><span class="b">Custom</span><span class="b">Reddit</span></div>
+  </a><a class="card" href="/case/bookkeeping-firm-workflows/">
+    <div class="badges"><span class="b ind-b">Accounting, tax &amp; bookkeeping</span><span class="b out-Worked">Worked</span></div>
+    <h3>Automate a bookkeeping firm's routine workflows</h3><p>A bookkeeping firm used n8n to automate recurring client work.</p>
+    <div class="badges"><span class="effort" title="Weekend project"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="b">Weekend project</span><span class="b risk">2 risks</span><span class="b">n8n</span><span class="b">Reddit</span></div>
+  </a><a class="card" href="/case/anker-voice-support/">
+    <div class="badges"><span class="b ind-b">Retail &amp; e-commerce</span><span class="b out-Worked">Worked</span></div>
+    <h3>Handle product questions, warranties and returns by voice</h3><p>A consumer electronics brand rebuilt its global phone support on voice agents in several languages.</p>
+    <div class="badges"><span class="effort" title="Developer build"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="b">Developer build</span><span class="b risk">2 risks</span><span class="b">Custom</span><span class="b">Company case study</span></div>
+  </a><a class="card" href="/case/safety-data-sheet-retrieval/">
+    <div class="badges"><span class="b ind-b">Manufacturing &amp; supply chain</span><span class="b out-Worked">Worked</span></div>
+    <h3>Find and parse chemical safety data sheets</h3><p>An app built with Manus finds the right SDS PDF online, downloads it, and turns it into structured data.</p>
+    <div class="badges"><span class="effort" title="Weekend project"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="b">Weekend project</span><span class="b safe">Low risk</span><span class="b">Manus</span><span class="b">Reddit</span></div>
+  </a></div></section>
+  <section class="sec"><div class="sec-head"><h2>Easy wins</h2><p>Under 15 minutes to try, with little or no risk.</p></div><div class="cards"><a class="card" href="/case/redline-word-tracked-changes/">
+    <div class="badges"><span class="b ind-b">Legal</span><span class="b out-Worked">Worked</span></div>
+    <h3>Redline a contract as Word tracked changes</h3><p>A lawyer had Claude rewrite two sections of a 30-page document and reply to comments as tracked changes.</p>
+    <div class="badges"><span class="effort" title="Try it now"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span><span class="b">Try it now</span><span class="b risk">1 risk</span><span class="b">Claude</span><span class="b">X</span></div>
+  </a><a class="card" href="/case/hospital-bill-medicare-analysis/">
+    <div class="badges"><span class="b ind-b">Healthcare, clinics &amp; dental</span><span class="b out-Worked">Worked</span></div>
+    <h3>Cut a hospital bill using Medicare price analysis</h3><p>Claude priced every billing code on a $195,628 hospital bill against Medicare rates; the patient then negotiated.</p>
+    <div class="badges"><span class="effort" title="Try it now"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span><span class="b">Try it now</span><span class="b risk">1 risk</span><span class="b">Claude</span><span class="b">X</span></div>
+  </a><a class="card" href="/case/hard-to-get-restaurant-table/">
+    <div class="badges"><span class="b ind-b">Restaurants &amp; hospitality</span><span class="b out-Worked">Worked</span></div>
+    <h3>Watch for and book a hard-to-get restaurant table</h3><p>A travel agent watched a popular restaurant for an opening, booked a table for two, and texted confirmation.</p>
+    <div class="badges"><span class="effort" title="Try it now"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span><span class="b">Try it now</span><span class="b risk">1 risk</span><span class="b">Custom</span><span class="b">X</span></div>
+  </a></div></section>
+  <section class="news" id="nl"><div class="sec-head"><h2>The weekly SolvedWith digest</h2></div>
+  <p class="note">Five new cases a week from the industries you pick. Each with what it took, what it risked, and whether it worked.</p>
+  <div class="chips"><button type="button" class="chip" data-nl="accounting" aria-pressed="false">Accounting, tax &amp; bookkeeping</button><button type="button" class="chip" data-nl="financial-services" aria-pressed="false">Banking &amp; financial services</button><button type="button" class="chip" data-nl="construction-trades" aria-pressed="false">Construction &amp; trades</button><button type="button" class="chip" data-nl="education" aria-pressed="false">Education</button><button type="button" class="chip" data-nl="government" aria-pressed="false">Government &amp; public sector</button><button type="button" class="chip" data-nl="healthcare" aria-pressed="false">Healthcare, clinics &amp; dental</button><button type="button" class="chip" data-nl="insurance" aria-pressed="false">Insurance</button><button type="button" class="chip" data-nl="legal" aria-pressed="false">Legal</button><button type="button" class="chip" data-nl="manufacturing" aria-pressed="false">Manufacturing &amp; supply chain</button><button type="button" class="chip" data-nl="marketing-agencies" aria-pressed="false">Marketing &amp; agencies</button><button type="button" class="chip" data-nl="media-publishing" aria-pressed="false">Media &amp; publishing</button><button type="button" class="chip" data-nl="professional-services" aria-pressed="false">Professional services &amp; consulting</button><button type="button" class="chip" data-nl="real-estate" aria-pressed="false">Real estate &amp; property</button><button type="button" class="chip" data-nl="recruiting" aria-pressed="false">Recruiting &amp; staffing</button><button type="button" class="chip" data-nl="restaurants-hospitality" aria-pressed="false">Restaurants &amp; hospitality</button><button type="button" class="chip" data-nl="retail-ecommerce" aria-pressed="false">Retail &amp; e-commerce</button><button type="button" class="chip" data-nl="saas-tech" aria-pressed="false">SaaS &amp; technology</button></div>
+  <form class="row" id="nl-form"><input type="email" id="nl-email" required placeholder="you@company.com" aria-label="Email address"><button class="btn" type="submit">Subscribe</button></form>
+  <p class="note" id="nl-msg">No picks means every industry.</p></section></main></div>
 <footer><div class="wrap"><span>SolvedWith.ai · real AI agent use cases, by industry</span><span>Contact: problem@solvedwith.ai</span></div></footer>
-
 <script src="/assets/site.js"></script>
 </body></html>
