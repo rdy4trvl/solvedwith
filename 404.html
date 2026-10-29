@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SolvedWith.ai</title><meta name="description" content="Real AI agent use cases by industry: what it took, what it can touch, and whether it worked.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a working reference shelf. Industry is the front door; every list shares one filter bar; cards carry the same badge row. */
+:root{
+  --bg:#F4F6F4; --surface:#FFFFFF; --ink:#14201C; --muted:#5A6B65; --line:#D9E1DD;
+  --solved:#0E6A4E; --solved-soft:#E2F0EA; --risk:#9A4A0B; --risk-soft:#FBEBDD;
+  --fail:#A3312A; --fail-soft:#F8E3E1; --partial:#7A5B00; --partial-soft:#F6EDCC;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1614; --surface:#16211E; --ink:#E6EEEA; --muted:#9AAEA7; --line:#2A3833;
+  --solved:#5FCB9F; --solved-soft:#16352B; --risk:#F0A86A; --risk-soft:#3A2614;
+  --fail:#F08A82; --fail-soft:#3A1C1A; --partial:#E5C55A; --partial-soft:#332B10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1614; --surface:#16211E; --ink:#E6EEEA; --muted:#9AAEA7; --line:#2A3833;
+  --solved:#5FCB9F; --solved-soft:#16352B; --risk:#F0A86A; --risk-soft:#3A2614;
+  --fail:#F08A82; --fail-soft:#3A1C1A; --partial:#E5C55A; --partial-soft:#332B10; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--solved)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--solved);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,5vw,44px);font-weight:700}
+h2{font-size:22px;font-weight:700}
+h3{font-size:17px;font-weight:600}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.banner{background:var(--partial-soft);color:var(--partial);font:500 13px var(--body)}
+.banner .wrap{padding-block:8px}
+header.top{border-bottom:1px solid var(--line);background:var(--surface)}
+header.top .wrap{display:flex;align-items:center;gap:20px;padding-block:14px;flex-wrap:wrap}
+.logo{font:700 22px var(--display);color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo .mark{width:24px;height:24px;border-radius:6px;background:var(--solved);display:grid;place-items:center}
+.logo .mark svg{width:15px;height:15px}
+.logo .tld{color:var(--solved)}
+nav.main{display:flex;gap:16px;flex-wrap:wrap;margin-left:auto}
+nav.main a{color:var(--muted);text-decoration:none;font-weight:500}
+nav.main a:hover{color:var(--ink)}
+main{padding-block:28px 64px;display:grid;gap:40px}
+.hero{display:grid;gap:14px;max-width:760px}
+.hero p{color:var(--muted);font-size:17px;margin:0;max-width:62ch}
+.search{display:flex;gap:8px;max-width:620px}
+.search input{flex:1;min-width:0;font:16px var(--body);padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.btn{font:600 14px var(--body);padding:10px 16px;border-radius:8px;border:1px solid var(--solved);background:var(--solved);color:var(--surface);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--solved)}
+.sec{display:grid;gap:16px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sec-head p{margin:0;color:var(--muted)}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.ind{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none}
+.ind:hover{border-color:var(--solved)}
+.ind .n{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.ind.thin .n::after{content:" · thin";color:var(--risk)}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.group{display:grid;gap:8px;align-content:start}
+.group ul{list-style:none;padding:0;margin:0;display:grid;gap:2px}
+.group a{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
+.group a:hover{color:var(--solved)}
+.group a span{font:13px var(--mono);color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px;align-content:start;color:var(--ink);text-decoration:none}
+.card:hover{border-color:var(--solved)}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.b{font:500 12px var(--mono);padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.b.ind-b{color:var(--ink);border-color:var(--ink)}
+.b.risk{background:var(--risk-soft);color:var(--risk);border-color:transparent}
+.b.safe{background:var(--solved-soft);color:var(--solved);border-color:transparent}
+.b.out-Worked{background:var(--solved-soft);color:var(--solved);border-color:transparent}
+.b.out-Partial{background:var(--partial-soft);color:var(--partial);border-color:transparent}
+.b.out-Failed{background:var(--fail-soft);color:var(--fail);border-color:transparent}
+.effort{display:inline-flex;gap:2px;align-items:center}
+.effort i{width:6px;height:10px;border-radius:2px;background:var(--line);display:inline-block}
+.effort i.on{background:var(--solved)}
+.layout{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
+@media (max-width:820px){.layout{grid-template-columns:1fr}}
+.filters{display:grid;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.filters label{display:grid;gap:4px;font:500 13px var(--body);color:var(--muted)}
+.filters select{font:14px var(--body);padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+.filters fieldset{border:0;padding:0;margin:0;display:grid;gap:6px}
+.filters legend{font:500 13px var(--body);color:var(--muted);padding:0;margin-bottom:4px}
+.check{display:flex!important;gap:8px;align-items:center;color:var(--ink)!important;font-weight:400!important}
+.listhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.listhead .count{font:500 13px var(--mono);color:var(--muted)}
+.listhead select{font:14px var(--body);padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 13px var(--body);padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--solved);border-color:var(--solved);color:var(--surface)}
+.pagehead{display:grid;gap:8px}
+.pagehead p{margin:0;color:var(--muted);max-width:65ch}
+.crumbs{font:13px var(--body);color:var(--muted)}
+.crumbs a{color:var(--muted)}
+.empty{padding:28px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);text-align:center}
+.casepage{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start}
+@media (max-width:820px){.casepage{grid-template-columns:1fr}}
+.prose{display:grid;gap:18px;min-width:0}
+.prose p{margin:0;max-width:65ch}
+.side{display:grid;gap:12px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px}
+.box dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px}
+.box dt{color:var(--muted)}
+.box dd{margin:0}
+.risklist{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:14px}
+.prompt{font:13px/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;white-space:pre-wrap;margin:0}
+.news{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px}
+.news .row{display:flex;gap:8px;flex-wrap:wrap}
+.news input[type=email]{flex:1;min-width:200px;font:15px var(--body);padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.note{font-size:13px;color:var(--muted);margin:0}
+.ok{color:var(--solved);font-weight:500;margin:0}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .wrap{padding-block:20px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+@media (prefers-reduced-motion:no-preference){.card,.ind{transition:border-color .15s}}
+</style>
+</head><body>
+
+<div class="banner"><div class="wrap">Layout prototype · 28 sample cases summarized from the review · source badges, dates and links are placeholders until tagging</div></div>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#home"><span class="mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--surface)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SolvedWith<span class="tld">.ai</span></a>
+  <nav class="main"><a href="#industries">Industries</a><a href="#categories">Categories</a><a href="#all">All cases</a><a href="#newsletter">Newsletter</a></nav>
+</div></header>
+<div class="wrap"><main id="app"></main></div>
+<footer><div class="wrap"><span>SolvedWith.ai · real AI agent use cases, by industry</span><span>Contact: problem@solvedwith.ai</span></div></footer>
+
+<script>
+const INDUSTRIES=[
+["real-estate","Real estate & property"],["healthcare","Healthcare, clinics & dental"],["insurance","Insurance"],
+["financial-services","Banking & financial services"],["accounting","Accounting, tax & bookkeeping"],["legal","Legal"],
+["retail-ecommerce","Retail & e-commerce"],["restaurants-hospitality","Restaurants & hospitality"],["construction-trades","Construction & trades"],
+["manufacturing","Manufacturing & supply chain"],["education","Education"],["marketing-agencies","Marketing & agencies"],
+["media-publishing","Media & publishing"],["saas-tech","SaaS & technology"],["professional-services","Professional services & consulting"],
+["recruiting","Recruiting & staffing"],["government","Government & public sector"],["cross-industry","Works in any industry"]];
+const GROUPS=[
+["Personal Life",[["money","Money & Investing"],["shopping","Shopping & Errands"],["travel","Travel, Bookings & Appointments"],["health","Health & Fitness"],["home","Home & Family"],["assistant","Personal Assistant & Paperwork"],["career","Jobs & Career"],["hobbies","Games & Hobbies"]]],
+["Business",[["sales","Sales & Lead Generation"],["marketing","Marketing, SEO & Social"],["support","Customer Support"],["finance","Finance & Bookkeeping"],["hr","HR & Recruiting"],["operations","Operations & Admin"]]],
+["Creative, Research & Learning",[["content","Content & Media"],["research","Research & Knowledge"],["teaching","Teaching & Learning"]]],
+["Building & Tech",[["software","Software Development"],["agent-building","Agent Building & Orchestration"],["science","Security, Science & Hardware"]]]];
+const CATS=Object.fromEntries(GROUPS.flatMap(g=>g[1]));
+const IND=Object.fromEntries(INDUSTRIES);
+const ROLES={individual:"Individual",smb:"Small-business owner",exec:"Executive / manager",marketer:"Marketer",sales:"Sales / BD",support:"Support lead",bookkeeper:"Finance / bookkeeper",recruiter:"Recruiter / HR",teacher:"Teacher",researcher:"Researcher",lawyer:"Lawyer",clinic:"Healthcare staff",realtor:"Real estate pro",seller:"E-commerce seller",developer:"Developer",nontech:"Non-technical builder",investor:"Investor"};
+const TYPES={coding:"Coding agent",browser:"Browser / computer-use",personal:"Always-on personal agent",workflow:"Workflow automation",voice:"Voice / phone agent",chat:"Chat assistant + apps",research:"Deep research agent"};
+const RISKS={money:"Spends money",accounts:"Accesses financial accounts",messages:"Sends messages as you",public:"Posts publicly",sensitive:"Handles sensitive personal data",data:"Changes or deletes data",code:"Runs code on your machine",legal:"Legal or tax consequences"};
+const EFFORT={1:["Try it now","Under 15 minutes; a prompt in a chat or browser agent"],2:["Short setup","Under 1 hour; connect accounts, no code"],3:["Weekend project","A few hours; scripts, schedules or self-hosting"],4:["Developer build","Multiple days; real code and deployment"]};
+
+// Sample cases, summarized in our own words. Source/date values are placeholders.
+let C=[];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const count=(f)=>C.filter(f).length;
+const effortHTML=n=>`<span class="effort" title="${EFFORT[n][0]}">${[1,2,3,4].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
+const fmtDate=d=>d?new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"Date unknown";
+
+function card(c){
+  const riskB=c.risk.length?`<span class="b risk">${c.risk.length} risk${c.risk.length>1?'s':''}</span>`:`<span class="b safe">Low risk</span>`;
+  const outB=c.out!=="Worked"?`<span class="b out-${c.out.replace(' ','')}">${c.out}</span>`:`<span class="b out-Worked">Worked</span>`;
+  return `<a class="card" href="#${c.id}">
+    <div class="badges"><span class="b ind-b">${esc(IND[c.ind[0]])}</span>${outB}</div>
+    <h3>${esc(c.t)}</h3><p>${esc(c.s)}</p>
+    <div class="badges">${effortHTML(c.eff)}<span class="b">${EFFORT[c.eff][0]}</span>${riskB}<span class="b">${esc(c.prod)}</span><span class="b">${c.src}</span></div>
+  </a>`;
+}
+
+// ---- filter bar shared by list pages
+let F={ind:"",role:"",type:"",eff:"",src:"",out:"",hide:[],sub:"",sort:"new",q:""};
+function resetF(o){F={ind:"",role:"",type:"",eff:"",src:"",out:"",hide:[],sub:"",sort:"new",q:"",...o};}
+function applyF(list){
+  let r=list.filter(c=>(!F.ind||c.ind.includes(F.ind))&&(!F.role||c.roles.includes(F.role))&&(!F.type||c.type.includes(F.type))&&(!F.eff||c.eff<=+F.eff)&&(!F.src||c.src===F.src)&&(!F.out||c.out===F.out)&&(!F.sub||c.sub===F.sub)&&!F.hide.some(h=>c.risk.includes(h)));
+  if(F.q){const q=F.q.toLowerCase();r=r.filter(c=>(c.t+" "+c.s+" "+c.prod+" "+c.ind.map(i=>IND[i]).join(" ")).toLowerCase().includes(q));}
+  if(F.sort==="easy")r.sort((a,b)=>a.eff-b.eff);
+  else if(F.sort==="risk")r.sort((a,b)=>a.risk.length-b.risk.length);
+  else r.sort((a,b)=>b.added.localeCompare(a.added));
+  return r;
+}
+const opt=(obj,sel,all)=>`<option value="">${all}</option>`+Object.entries(obj).map(([k,v])=>`<option value="${k}"${sel===k?' selected':''}>${esc(v)}</option>`).join('');
+function filterBar(lockInd){
+  const indOpts=Object.fromEntries(INDUSTRIES);
+  const srcs=[...new Set(C.map(c=>c.src))].sort();
+  return `<form class="filters" id="fbar" onsubmit="return false">
+    ${lockInd?'':`<label for="f-ind">Industry<select id="f-ind" data-k="ind">${opt(indOpts,F.ind,"All industries")}</select></label>`}
+    <label for="f-role">Role<select id="f-role" data-k="role">${opt(ROLES,F.role,"Any role")}</select></label>
+    <label for="f-type">Agent type<select id="f-type" data-k="type">${opt(TYPES,F.type,"Any type")}</select></label>
+    <label for="f-eff">Effort<select id="f-eff" data-k="eff">${opt({1:"Try it now only",2:"Up to short setup",3:"Up to weekend project",4:"Any, incl. developer builds"},F.eff,"Any effort")}</select></label>
+    <fieldset><legend>Hide cases that…</legend>${Object.entries(RISKS).map(([k,v])=>`<label class="check" for="h-${k}"><input type="checkbox" id="h-${k}" data-h="${k}"${F.hide.includes(k)?' checked':''}> ${esc(v.toLowerCase())}</label>`).join('')}</fieldset>
+    <label for="f-out">Outcome<select id="f-out" data-k="out">${opt({Worked:"Worked",Partial:"Partial","Not reported":"Not reported",Failed:"Failed"},F.out,"Any outcome")}</select></label>
+    <label for="f-src">Source<select id="f-src" data-k="src">${opt(Object.fromEntries(srcs.map(s=>[s,s])),F.src,"Any source")}</select></label>
+    <button type="button" class="btn ghost" id="f-clear">Clear filters</button>
+  </form>`;
+}
+function listHTML(base){
+  const r=applyF(base);
+  return `<div class="listhead"><span class="count">${r.length} of ${base.length} cases</span>
+    <label for="f-sort" class="count">Sort <select id="f-sort">${[["new","Newest added"],["easy","Easiest first"],["risk","Lowest risk first"]].map(([k,v])=>`<option value="${k}"${F.sort===k?' selected':''}>${v}</option>`).join('')}</select></label></div>
+    ${r.length?`<div class="cards">${r.map(card).join('')}</div>`:`<div class="empty">No cases match these filters yet. Try clearing one.</div>`}`;
+}
+function wireList(base,lockInd,keep){
+  const rerender=()=>{$("#list").innerHTML=listHTML(base);$("#f-sort").onchange=e=>{F.sort=e.target.value;rerender();};};
+  document.querySelectorAll("#fbar select").forEach(s=>s.onchange=()=>{F[s.dataset.k]=s.value;rerender();});
+  document.querySelectorAll("#fbar [data-h]").forEach(x=>x.onchange=()=>{F.hide=x.checked?[...F.hide,x.dataset.h]:F.hide.filter(h=>h!==x.dataset.h);rerender();});
+  $("#f-clear").onclick=()=>{resetF(keep);route();};
+  document.querySelectorAll("[data-sub]").forEach(b=>b.onclick=()=>{F.sub=F.sub===b.dataset.sub?"":b.dataset.sub;document.querySelectorAll("[data-sub]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.sub===F.sub));rerender();});
+  rerender();
+}
+
+// ---- pages
+function newsletter(){
+  const indChips=INDUSTRIES.filter(i=>i[0]!=="cross-industry").map(([k,v])=>`<button type="button" class="chip" data-nl="${k}" aria-pressed="false">${esc(v)}</button>`).join('');
+  return `<section class="news" id="nl"><div class="sec-head"><h2>The weekly SolvedWith digest</h2></div>
+  <p class="note">Five new cases a week from the industries you pick. Each with what it took, what it risked, and whether it worked.</p>
+  <div class="chips">${indChips}</div>
+  <form class="row" id="nl-form"><input type="email" id="nl-email" required placeholder="you@company.com" aria-label="Email address"><button class="btn" type="submit">Subscribe</button></form>
+  <p class="note" id="nl-msg">No picks means every industry.</p></section>`;
+}
+function wireNews(pre){
+  const picked=new Set(pre?[pre]:[]);
+  document.querySelectorAll("[data-nl]").forEach(b=>{b.setAttribute("aria-pressed",picked.has(b.dataset.nl));b.onclick=()=>{picked.has(b.dataset.nl)?picked.delete(b.dataset.nl):picked.add(b.dataset.nl);b.setAttribute("aria-pressed",picked.has(b.dataset.nl));};});
+  $("#nl-form").onsubmit=e=>{e.preventDefault();const m=$("#nl-msg");m.className="ok";m.textContent=`Prototype only: signup isn't connected yet. This would subscribe ${$("#nl-email").value} to ${picked.size?[...picked].map(k=>IND[k]).join(", "):"every industry"}.`;};
+}
+function home(){
+  const indTiles=INDUSTRIES.map(([k,v])=>{const n=count(c=>c.ind.includes(k));return `<a class="ind${n<1?' thin':''}" href="#i-${k}"><span>${esc(v)}</span><span class="n">${n}</span></a>`;}).join('');
+  const groups=GROUPS.map(([g,cats])=>`<div class="group"><span class="eyebrow">${g}</span><ul>${cats.map(([k,v])=>`<li><a href="#c-${k}">${esc(v)}<span>${count(c=>c.cat===k)}</span></a></li>`).join('')}</ul></div>`).join('');
+  const newest=[...C].sort((a,b)=>b.added.localeCompare(a.added)).slice(0,6);
+  const easy=C.filter(c=>c.eff===1&&c.risk.length<=1).slice(0,6);
+  $("#app").innerHTML=`
+  <section class="hero"><span class="eyebrow">${C.length} real cases · ${INDUSTRIES.length-1} industries · 20 categories</span>
+    <h1>See what's already been solved with AI agents in your industry</h1>
+    <p>Real examples of people handing work to AI agents, with what it took to set up, what it can touch, and whether it worked.</p>
+    <form class="search" id="hs"><input id="hs-q" type="search" placeholder="Try invoices, appointments, SEO…" aria-label="Search cases"><button class="btn" type="submit">Search</button></form>
+  </section>
+  <section class="sec" id="industries"><div class="sec-head"><h2>Browse by industry</h2><p>Cases that only apply to your field, then the ones that work anywhere.</p></div><div class="ind-grid">${indTiles}</div></section>
+  <section class="sec" id="categories"><div class="sec-head"><h2>Browse by category</h2></div><div class="groups">${groups}</div></section>
+  <section class="sec"><div class="sec-head"><h2>New this week</h2><a href="#all">All cases</a></div><div class="cards">${newest.map(card).join('')}</div></section>
+  <section class="sec"><div class="sec-head"><h2>Easy wins</h2><p>Under 15 minutes to try, with little or no risk.</p></div><div class="cards">${easy.map(card).join('')}</div></section>
+  ${newsletter()}`;
+  $("#hs").onsubmit=e=>{e.preventDefault();resetF({q:$("#hs-q").value.trim()});location.hash="all";};
+  wireNews();
+}
+function listPage(kind,key){
+  let base,head,lockInd=false,keep={};
+  if(kind==="i"){
+    lockInd=true;
+    const own=C.filter(c=>c.ind.includes(key));
+    const fns=new Set(own.map(c=>c.cat));
+    const anyInd=key==="cross-industry"?[]:C.filter(c=>c.ind.includes("cross-industry")||(!c.ind.includes(key)&&fns.has(c.cat)&&c.ind.length>1));
+    base=own;
+    const catsHere=[...new Set(own.map(c=>c.cat))];
+    head=`<div class="pagehead"><div class="crumbs"><a href="#home">Home</a> / <a href="#industries">Industries</a></div>
+      <span class="eyebrow">Industry</span><h1>Solved with AI in ${esc(IND[key])}</h1>
+      <p>${own.length} case${own.length===1?'':'s'} from this industry${catsHere.length?`, across ${catsHere.length} categor${catsHere.length===1?'y':'ies'}`:''}. <a href="#nl" id="nl-jump">Get this industry's newsletter</a></p>
+      ${catsHere.length?`<div class="chips">${catsHere.map(k=>`<a class="chip" href="#c-${k}">${esc(CATS[k])}</a>`).join('')}</div>`:''}</div>`;
+    $("#app").innerHTML=`${head}<div class="layout">${filterBar(true)}<div><div id="list"></div>
+      ${anyInd.length?`<section class="sec" style="margin-top:32px"><div class="sec-head"><h2>Also works in any industry</h2><p>Same kinds of jobs, from other fields.</p></div><div class="cards">${anyInd.slice(0,6).map(card).join('')}</div></section>`:''}
+      </div></div>${newsletter()}`;
+    wireList(base,true,{});wireNews(key==="cross-industry"?null:key);return;
+  }
+  if(kind==="c"){
+    base=C.filter(c=>c.cat===key);
+    const subs=[...new Set(base.map(c=>c.sub))];
+    head=`<div class="pagehead"><div class="crumbs"><a href="#home">Home</a> / <a href="#categories">Categories</a></div>
+      <span class="eyebrow">${GROUPS.find(g=>g[1].some(x=>x[0]===key))[0]}</span><h1>${esc(CATS[key])}</h1>
+      <p>${base.length} case${base.length===1?'':'s'}. Filter by your industry to see only what applies to you.</p>
+      ${subs.length?`<div class="chips">${subs.map(s=>`<button type="button" class="chip" data-sub="${esc(s)}" aria-pressed="${F.sub===s}">${esc(s)}</button>`).join('')}</div>`:''}</div>`;
+  } else {
+    base=C;
+    head=`<div class="pagehead"><div class="crumbs"><a href="#home">Home</a></div><h1>All cases</h1>${F.q?`<p>Searching for “${esc(F.q)}”. <a href="#all" id="clr-q">Clear search</a></p>`:''}</div>`;
+    keep={};
+  }
+  $("#app").innerHTML=`${head}<div class="layout">${filterBar(lockInd)}<div id="list"></div></div>`;
+  const q=$("#clr-q");if(q)q.onclick=e=>{e.preventDefault();F.q="";route();};
+  wireList(base,lockInd,keep);
+}
+function casePage(c){
+  const related=C.filter(x=>x.id!==c.id&&(x.sub===c.sub||x.ind.some(i=>c.ind.includes(i)))).slice(0,4);
+  $("#app").innerHTML=`<div class="crumbs"><a href="#home">Home</a> / <a href="#i-${c.ind[0]}">${esc(IND[c.ind[0]])}</a> / <a href="#c-${c.cat}">${esc(CATS[c.cat])}</a></div>
+  <div class="casepage"><article class="prose">
+    <div class="badges">${c.ind.map(i=>`<a class="b ind-b" href="#i-${i}">${esc(IND[i])}</a>`).join('')}<span class="b out-${c.out.replace(' ','')}">${c.out}</span></div>
+    <h1>${esc(c.t)}</h1><p style="font-size:17px;color:var(--muted)">${esc(c.s)}</p>
+    <section class="sec"><h2>What they did</h2><p>${esc(c.did)}</p></section>
+    <section class="sec"><h2>How it went</h2><p>${esc(c.how)}</p></section>
+    <section class="sec"><h2>Try it</h2><pre class="prompt" id="tp">${esc(promptFor(c))}</pre><div><button class="btn ghost" id="copy">Copy prompt</button></div></section>
+  </article>
+  <aside class="side">
+    <div class="box"><h3>Setup</h3><dl>
+      <dt>Effort</dt><dd>${effortHTML(c.eff)} ${EFFORT[c.eff][0]}<br><span class="note">${EFFORT[c.eff][1]}</span></dd>
+      <dt>Agent type</dt><dd>${c.type.map(t=>TYPES[t]).join(", ")}</dd>
+      <dt>Product</dt><dd>${esc(c.prod)}</dd>
+      <dt>For</dt><dd>${c.roles.map(r=>ROLES[r]).join(", ")}</dd>
+      <dt>Category</dt><dd><a href="#c-${c.cat}">${esc(CATS[c.cat])}</a> · ${esc(c.sub)}</dd></dl></div>
+    <div class="box"><h3>What it can touch</h3>
+      ${c.risk.length?`<ul class="risklist">${c.risk.map(r=>`<li><span class="b risk">${RISKS[r]}</span></li>`).join('')}</ul>`:`<span class="b safe">No risk labels</span>`}
+      <p class="note">${c.appr?"A person approves before it acts.":"No human approval step described."}</p></div>
+    <div class="box"><h3>Source</h3><dl>
+      <dt>From</dt><dd><span class="b">${c.src}</span></dd>
+      <dt>Posted</dt><dd>${fmtDate(c.posted)}</dd>
+      <dt>Added</dt><dd>${fmtDate(c.added)}</dd></dl>
+      <p class="note">Original link is added during tagging.</p></div>
+  </aside></div>
+  ${related.length?`<section class="sec"><h2>Related cases</h2><div class="cards">${related.map(card).join('')}</div></section>`:''}`;
+  $("#copy").onclick=async()=>{const t=$("#tp").textContent;try{await navigator.clipboard.writeText(t);$("#copy").textContent="Copied";}catch(e){const r=document.createRange();r.selectNodeContents($("#tp"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("#copy").textContent="Selected: press Ctrl+C";}};
+}
+function promptFor(c){return `I work in ${IND[c.ind[0]].toLowerCase()} and want to ${c.t.charAt(0).toLowerCase()+c.t.slice(1)}.\nWalk me through setting this up with ${c.prod==="Custom"?"an AI agent":c.prod}, step by step.\nBefore anything that ${c.risk.length?c.risk.map(r=>RISKS[r].toLowerCase()).join(" or "):"changes something"}, stop and ask me first.`;}
+
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1))||"home";
+  window.scrollTo(0,0);
+  if(h==="home"||h==="industries"||h==="categories"||h==="newsletter"){home();const t=h==="newsletter"?"nl":h;if(h!=="home"){const el=document.getElementById(t);if(el)el.scrollIntoView();}return;}
+  if(h==="all"){listPage("a");return;}
+  if(h==="nl"){const el=document.getElementById("nl");if(el)el.scrollIntoView();else{location.hash="newsletter";}return;}
+  if(h.startsWith("i-")&&IND[h.slice(2)]){if(F._ctx!==h){resetF();F._ctx=h;}listPage("i",h.slice(2));return;}
+  if(h.startsWith("c-")&&CATS[h.slice(2)]){if(F._ctx!==h){resetF();F._ctx=h;}listPage("c",h.slice(2));return;}
+  const c=C.find(x=>x.id===h);if(c){casePage(c);return;}
+  home();
+}
+window.addEventListener("hashchange",route);
+fetch("data/cases.json").then(r=>r.json()).then(d=>{C=d;route();}).catch(()=>{$("#app").innerHTML='<div class="empty">Could not load the case list. Refresh to try again.</div>';});
+</script>
+</body></html>

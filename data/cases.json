@@ -1,0 +1,847 @@
+[
+ {
+  "id": "pharmacy-refill-voice-agent",
+  "t": "Handle pharmacy refill calls with a voice agent",
+  "s": "A pharmacy's phone agent identifies callers, submits refills, and routes renewal requests to prescribers.",
+  "did": "The pharmacy put a voice agent on its refill line. It confirms who is calling, checks the prescription, submits the refill, or queues a renewal request for the prescriber.",
+  "how": "It handled about 380 refills in its first 30 days. Calls it can't resolve go to staff.",
+  "out": "Worked",
+  "ind": [
+   "healthcare"
+  ],
+  "cat": "support",
+  "sub": "Voice & phone receptionists",
+  "roles": [
+   "clinic",
+   "smb"
+  ],
+  "type": [
+   "voice"
+  ],
+  "prod": "Custom",
+  "eff": 4,
+  "risk": [
+   "sensitive",
+   "messages"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-26",
+  "url": ""
+ },
+ {
+  "id": "real-estate-site-visits",
+  "t": "Book property viewings and follow up with leads",
+  "s": "An n8n sales assistant books site visits, sends follow-up emails, and updates the CRM for a real-estate team.",
+  "did": "The builder connected n8n to email, a calendar and the CRM. The agent answers lead questions, offers viewing times, books them, and logs each step.",
+  "how": "It runs daily with no manual booking. The poster didn't share conversion numbers.",
+  "out": "Worked",
+  "ind": [
+   "real-estate"
+  ],
+  "cat": "sales",
+  "sub": "Appointment setting",
+  "roles": [
+   "realtor",
+   "smb"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "n8n",
+  "eff": 3,
+  "risk": [
+   "messages",
+   "data"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-19",
+  "url": ""
+ },
+ {
+  "id": "reconcile-supplier-invoices",
+  "t": "Reconcile supplier invoices and invoice clients automatically",
+  "s": "A business owner's agent matches supplier invoices, reports pricing and freight, and invoices clients through Zoho Books.",
+  "did": "The owner built a small CRM with an agent behind it. It reads supplier invoices, matches them to orders, places supplier orders, and raises client invoices through the Zoho Books API.",
+  "how": "Reconciliation that took hours now runs on its own, with a pricing and freight report as a bonus.",
+  "out": "Worked",
+  "ind": [
+   "accounting",
+   "retail-ecommerce"
+  ],
+  "cat": "finance",
+  "sub": "Reconciliation",
+  "roles": [
+   "smb",
+   "bookkeeper"
+  ],
+  "type": [
+   "coding",
+   "workflow"
+  ],
+  "prod": "Custom",
+  "eff": 4,
+  "risk": [
+   "accounts",
+   "data",
+   "money"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-24",
+  "url": ""
+ },
+ {
+  "id": "dealership-sms-support",
+  "t": "Triage dealership customer texts by sentiment",
+  "s": "A car dealership group's Make flow reads customer texts, closes routine ones, and flags unhappy customers.",
+  "did": "Every inbound text runs through a sentiment check. Routine messages get closed with a reply; negative ones go straight to the aftersales team.",
+  "how": "It auto-closed about 18,000 of 47,000 messages, so staff only saw the ones that needed a person.",
+  "out": "Worked",
+  "ind": [
+   "retail-ecommerce"
+  ],
+  "cat": "support",
+  "sub": "Chat & WhatsApp",
+  "roles": [
+   "support",
+   "exec"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "Make",
+  "eff": 3,
+  "risk": [
+   "messages"
+  ],
+  "appr": false,
+  "src": "Company case study",
+  "posted": "2026-09-14",
+  "added": "2026-10-23",
+  "url": ""
+ },
+ {
+  "id": "screen-job-candidates",
+  "t": "Screen job candidates and handle outreach",
+  "s": "A Make scenario parses resumes, scores candidates, updates the ATS, and sends shortlists to recruiters in Slack.",
+  "did": "Resumes land in a folder. The flow extracts each one, scores it against the role, writes the result to the ATS, emails an acknowledgment, and posts a shortlist to Slack.",
+  "how": "Published as a vendor how-to, so no real-world results are reported.",
+  "out": "Not reported",
+  "ind": [
+   "recruiting"
+  ],
+  "cat": "hr",
+  "sub": "Screening & interviews",
+  "roles": [
+   "recruiter"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "Make",
+  "eff": 3,
+  "risk": [
+   "messages",
+   "sensitive"
+  ],
+  "appr": true,
+  "src": "Company case study",
+  "posted": "",
+  "added": "2026-10-23",
+  "url": ""
+ },
+ {
+  "id": "teacher-report-marking",
+  "t": "Mark student reports and build an assessment dashboard",
+  "s": "A primary teacher had Claude build an app that marks reports, plus a dashboard for assessment data.",
+  "did": "The teacher described the marking rubric and the data they track. Claude built a marking app, a dashboard, and a skill that lines up lesson ideas with the curriculum.",
+  "how": "Marking time dropped, and the dashboard replaced a manual spreadsheet.",
+  "out": "Worked",
+  "ind": [
+   "education"
+  ],
+  "cat": "teaching",
+  "sub": "Grading & feedback",
+  "roles": [
+   "teacher",
+   "nontech"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "Claude",
+  "eff": 3,
+  "risk": [
+   "sensitive"
+  ],
+  "appr": true,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-24",
+  "url": ""
+ },
+ {
+  "id": "split-homework-scans",
+  "t": "Split scanned homework and log it per student",
+  "s": "A Claude Code skill reads names on batch scans, splits the PDF per student, and updates the completion sheet.",
+  "did": "Teachers scan a stack of handwritten homework in one go. The skill reads each name, matches it to the class roster, splits the PDF, and marks the tracker.",
+  "how": "Missing work gets flagged automatically, which used to take a manual pass every week.",
+  "out": "Worked",
+  "ind": [
+   "education"
+  ],
+  "cat": "teaching",
+  "sub": "Grading & feedback",
+  "roles": [
+   "teacher"
+  ],
+  "type": [
+   "coding"
+  ],
+  "prod": "Claude Code",
+  "eff": 3,
+  "risk": [
+   "data",
+   "sensitive"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-18",
+  "url": ""
+ },
+ {
+  "id": "redline-word-tracked-changes",
+  "t": "Redline a contract as Word tracked changes",
+  "s": "A lawyer had Claude rewrite two sections of a 30-page document and reply to comments as tracked changes.",
+  "did": "Working inside Word, the lawyer asked Claude to revise two sections and answer the reviewer comments, keeping every edit as a native tracked change.",
+  "how": "The lawyer judged the result better than Microsoft's built-in assistant and kept full control of what to accept.",
+  "out": "Worked",
+  "ind": [
+   "legal"
+  ],
+  "cat": "operations",
+  "sub": "Documents, decks & reports",
+  "roles": [
+   "lawyer"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "Claude",
+  "eff": 1,
+  "risk": [
+   "legal"
+  ],
+  "appr": true,
+  "src": "X",
+  "posted": "2026-10-17",
+  "added": "2026-10-18",
+  "url": ""
+ },
+ {
+  "id": "hospital-bill-medicare-analysis",
+  "t": "Cut a hospital bill using Medicare price analysis",
+  "s": "Claude priced every billing code on a $195,628 hospital bill against Medicare rates; the patient then negotiated.",
+  "did": "The patient shared the itemized bill. Claude built a spreadsheet of Medicare prices for each code, showing where charges ran far above them.",
+  "how": "Using that analysis, the patient negotiated about $163,000 off. The patient wrote the letters; Claude only analyzed.",
+  "out": "Worked",
+  "ind": [
+   "healthcare",
+   "insurance"
+  ],
+  "cat": "money",
+  "sub": "Disputes & insurance claims",
+  "roles": [
+   "individual"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "Claude",
+  "eff": 1,
+  "risk": [
+   "sensitive"
+  ],
+  "appr": true,
+  "src": "X",
+  "posted": "",
+  "added": "2026-10-15",
+  "url": ""
+ },
+ {
+  "id": "us-taxes-from-1099s",
+  "t": "Calculate US taxes from 1099s and brokerage statements",
+  "s": "ChatGPT computed a full US tax picture from 1099s, a self-employment spreadsheet, and brokerage statements.",
+  "did": "The poster uploaded their 1099 forms, a spreadsheet of self-employed income and expenses, and brokerage statements, then asked for the full calculation.",
+  "how": "The numbers matched a professional's result in their case study.",
+  "out": "Worked",
+  "ind": [
+   "accounting"
+  ],
+  "cat": "money",
+  "sub": "Taxes",
+  "roles": [
+   "individual",
+   "smb"
+  ],
+  "type": [
+   "browser",
+   "chat"
+  ],
+  "prod": "ChatGPT Agent",
+  "eff": 2,
+  "risk": [
+   "sensitive",
+   "legal"
+  ],
+  "appr": true,
+  "src": "Blog",
+  "posted": "",
+  "added": "2026-10-22",
+  "url": ""
+ },
+ {
+  "id": "meta-ad-campaigns-newsletter",
+  "t": "Run Meta ad campaigns for a newsletter",
+  "s": "A Claude Code agent made ad images, ran Meta campaigns through the API, and built landing-page variants.",
+  "did": "The agent generated creative, launched and adjusted campaigns via the Meta API, built landing page variants, and pulled analytics each day.",
+  "how": "About 50 variants were tested over 31 days. The write-up shares the process more than the final cost per subscriber.",
+  "out": "Not reported",
+  "ind": [
+   "media-publishing",
+   "marketing-agencies"
+  ],
+  "cat": "marketing",
+  "sub": "Paid ads",
+  "roles": [
+   "marketer",
+   "developer"
+  ],
+  "type": [
+   "coding"
+  ],
+  "prod": "Claude Code",
+  "eff": 4,
+  "risk": [
+   "money",
+   "public"
+  ],
+  "appr": false,
+  "src": "Blog",
+  "posted": "",
+  "added": "2026-10-17",
+  "url": ""
+ },
+ {
+  "id": "technical-seo-code-fixes",
+  "t": "Find technical SEO problems and generate the fixes",
+  "s": "An SEO agent crawled a site, found broken canonicals and orphaned pages, ranked them, and wrote code fixes.",
+  "did": "The author tested five SEO agents. The best one browsed the whole site, listed issues by likely impact, and produced the code changes for each.",
+  "how": "It found broken canonical tags, orphaned pages, and missing schema; two other agents only pulled Search Console data.",
+  "out": "Worked",
+  "ind": [
+   "marketing-agencies",
+   "saas-tech"
+  ],
+  "cat": "marketing",
+  "sub": "SEO & AI-search visibility",
+  "roles": [
+   "marketer"
+  ],
+  "type": [
+   "browser"
+  ],
+  "prod": "ChatGPT",
+  "eff": 2,
+  "risk": [],
+  "appr": true,
+  "src": "Blog",
+  "posted": "2026-10-20",
+  "added": "2026-10-27",
+  "url": ""
+ },
+ {
+  "id": "reorder-low-stock",
+  "t": "Reorder low stock from suppliers automatically",
+  "s": "Each morning a system checks Shopify inventory and emails a ready-made order to the right supplier.",
+  "did": "The store owner set reorder levels per product. A daily job compares stock against them and emails the matching supplier a pre-written order.",
+  "how": "Stockouts stopped, and the owner no longer checks inventory by hand.",
+  "out": "Worked",
+  "ind": [
+   "retail-ecommerce"
+  ],
+  "cat": "operations",
+  "sub": "Inventory & ordering",
+  "roles": [
+   "seller",
+   "smb"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "Custom",
+  "eff": 3,
+  "risk": [
+   "messages",
+   "money"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-19",
+  "url": ""
+ },
+ {
+  "id": "freshdesk-support-tickets",
+  "t": "Answer support tickets from Freshdesk history",
+  "s": "A SaaS owner connected ChatGPT to Freshdesk and internal tools, then pulled back from full autonomy.",
+  "did": "The agent could read past tickets and use internal tools to draft and send answers.",
+  "how": "Picking the right answer, and knowing when not to answer, proved unreliable. It now drafts and a person sends.",
+  "out": "Partial",
+  "ind": [
+   "saas-tech"
+  ],
+  "cat": "support",
+  "sub": "Tickets & email",
+  "roles": [
+   "support",
+   "smb"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "ChatGPT",
+  "eff": 3,
+  "risk": [
+   "messages"
+  ],
+  "appr": true,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-23",
+  "url": ""
+ },
+ {
+  "id": "gorgias-support-disabled",
+  "t": "Handle store customer support with an AI agent",
+  "s": "A merchant ran Gorgias's AI agent for months, then switched it off.",
+  "did": "The agent answered customer emails and chats for an online store.",
+  "how": "It gave irrelevant answers and promised things the store couldn't deliver, so the merchant disabled it.",
+  "out": "Failed",
+  "ind": [
+   "retail-ecommerce"
+  ],
+  "cat": "support",
+  "sub": "Tickets & email",
+  "roles": [
+   "seller",
+   "support"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "Custom",
+  "eff": 2,
+  "risk": [
+   "messages"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-27",
+  "url": ""
+ },
+ {
+  "id": "contractor-back-office",
+  "t": "Run a contractor's back-office paperwork",
+  "s": "A contractor's agent flagged an insurance certificate mismatch, created work orders, and filled a credit application.",
+  "did": "The agent read contracts and certificates in the contractor's files and email, then produced work orders and forms.",
+  "how": "It caught an insurance discrepancy before a job started, which the contractor said would have been missed.",
+  "out": "Worked",
+  "ind": [
+   "construction-trades"
+  ],
+  "cat": "operations",
+  "sub": "Documents, decks & reports",
+  "roles": [
+   "smb"
+  ],
+  "type": [
+   "personal"
+  ],
+  "prod": "Grok Bot",
+  "eff": 2,
+  "risk": [
+   "data"
+  ],
+  "appr": true,
+  "src": "X",
+  "posted": "",
+  "added": "2026-10-19",
+  "url": ""
+ },
+ {
+  "id": "monday-to-xero",
+  "t": "Turn orders into Xero purchase orders, invoices and bills",
+  "s": "A Make setup creates Xero purchase orders from monday.com, emails client invoices, and matches supplier bills.",
+  "did": "When an order changes status in monday.com, the flow creates the Xero PO, sends the client invoice, and matches uploaded supplier invoices to bills.",
+  "how": "Anything that fails to match is flagged for a person instead of guessed.",
+  "out": "Worked",
+  "ind": [
+   "accounting"
+  ],
+  "cat": "finance",
+  "sub": "Invoices & payables",
+  "roles": [
+   "bookkeeper",
+   "smb"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "Make",
+  "eff": 3,
+  "risk": [
+   "accounts",
+   "messages",
+   "data"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-17",
+  "url": ""
+ },
+ {
+  "id": "bookkeeping-firm-workflows",
+  "t": "Automate a bookkeeping firm's routine workflows",
+  "s": "A bookkeeping firm used n8n to automate recurring client work.",
+  "did": "Repetitive steps such as collecting statements, chasing documents and preparing entries became n8n workflows.",
+  "how": "The firm estimates about 600 hours saved a year.",
+  "out": "Worked",
+  "ind": [
+   "accounting"
+  ],
+  "cat": "finance",
+  "sub": "Reconciliation",
+  "roles": [
+   "bookkeeper"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "n8n",
+  "eff": 3,
+  "risk": [
+   "accounts",
+   "data"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-26",
+  "url": ""
+ },
+ {
+  "id": "sentry-to-fix-prs",
+  "t": "Turn bug reports into fix pull requests",
+  "s": "Sentry's analysis hands the root cause to a Cursor cloud agent, which writes the fix and opens a PR.",
+  "did": "When Sentry finds the root cause of an error, it passes the context to Cursor's agent. The agent writes a fix and opens a pull request in the repo.",
+  "how": "Developers review and merge the PR, so nothing ships without a person.",
+  "out": "Worked",
+  "ind": [
+   "saas-tech"
+  ],
+  "cat": "software",
+  "sub": "Code changes & PRs",
+  "roles": [
+   "developer"
+  ],
+  "type": [
+   "coding"
+  ],
+  "prod": "Cursor",
+  "eff": 3,
+  "risk": [
+   "code"
+  ],
+  "appr": true,
+  "src": "Company case study",
+  "posted": "",
+  "added": "2026-10-22",
+  "url": ""
+ },
+ {
+  "id": "cms-to-markdown-migration",
+  "t": "Move a company website off its CMS",
+  "s": "Cursor agents moved a company site from a CMS to code and Markdown in three days.",
+  "did": "The engineer had agents convert content and refactor the site, with sub-agents splitting the broad changes.",
+  "how": "It took three days and about $260 in model costs.",
+  "out": "Worked",
+  "ind": [
+   "saas-tech"
+  ],
+  "cat": "software",
+  "sub": "Migrations",
+  "roles": [
+   "developer"
+  ],
+  "type": [
+   "coding"
+  ],
+  "prod": "Cursor",
+  "eff": 4,
+  "risk": [
+   "code",
+   "data"
+  ],
+  "appr": true,
+  "src": "Blog",
+  "posted": "",
+  "added": "2026-10-22",
+  "url": ""
+ },
+ {
+  "id": "hard-to-get-restaurant-table",
+  "t": "Watch for and book a hard-to-get restaurant table",
+  "s": "A travel agent watched a popular restaurant for an opening, booked a table for two, and texted confirmation.",
+  "did": "The user named the restaurant and party size. The agent checked for openings until one appeared, then booked it.",
+  "how": "It secured an 8:45pm table and sent a text confirmation.",
+  "out": "Worked",
+  "ind": [
+   "restaurants-hospitality"
+  ],
+  "cat": "travel",
+  "sub": "Restaurants & events",
+  "roles": [
+   "individual"
+  ],
+  "type": [
+   "browser"
+  ],
+  "prod": "Custom",
+  "eff": 1,
+  "risk": [
+   "money"
+  ],
+  "appr": false,
+  "src": "X",
+  "posted": "",
+  "added": "2026-10-15",
+  "url": ""
+ },
+ {
+  "id": "vc-founder-screening",
+  "t": "Screen new founders for venture investing",
+  "s": "An investor's agents watch new company filings, research founders, and draft outreach to promising matches.",
+  "did": "The system monitors new filings, researches each founder, flags ones that match the fund's thesis, then drafts outreach and preps meeting questions.",
+  "how": "Outreach and scheduling run without the investor doing first-pass research.",
+  "out": "Worked",
+  "ind": [
+   "financial-services"
+  ],
+  "cat": "sales",
+  "sub": "Lead finding & enrichment",
+  "roles": [
+   "investor"
+  ],
+  "type": [
+   "research",
+   "workflow"
+  ],
+  "prod": "Custom",
+  "eff": 4,
+  "risk": [
+   "messages"
+  ],
+  "appr": false,
+  "src": "Blog",
+  "posted": "",
+  "added": "2026-10-20",
+  "url": ""
+ },
+ {
+  "id": "anker-voice-support",
+  "t": "Handle product questions, warranties and returns by voice",
+  "s": "A consumer electronics brand rebuilt its global phone support on voice agents in several languages.",
+  "did": "Voice agents answer product questions, process warranty claims and start returns, in multiple languages.",
+  "how": "Reported in a vendor case study; figures are the vendor's own.",
+  "out": "Worked",
+  "ind": [
+   "retail-ecommerce"
+  ],
+  "cat": "support",
+  "sub": "Voice & phone receptionists",
+  "roles": [
+   "support",
+   "exec"
+  ],
+  "type": [
+   "voice"
+  ],
+  "prod": "Custom",
+  "eff": 4,
+  "risk": [
+   "messages",
+   "sensitive"
+  ],
+  "appr": false,
+  "src": "Company case study",
+  "posted": "",
+  "added": "2026-10-25",
+  "url": ""
+ },
+ {
+  "id": "post-meeting-follow-ups",
+  "t": "Handle follow-ups after every meeting",
+  "s": "An agent finds the transcript, pulls out action items, messages teammates, and books the next meeting.",
+  "did": "After a meeting ends, the agent reads the transcript, lists action items, posts them to Slack, and checks calendars to schedule a follow-up.",
+  "how": "Shown as a vendor demo, so no real-world results are reported.",
+  "out": "Not reported",
+  "ind": [
+   "cross-industry"
+  ],
+  "cat": "operations",
+  "sub": "Work inbox & meetings",
+  "roles": [
+   "exec"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "Zapier Agents",
+  "eff": 2,
+  "risk": [
+   "messages"
+  ],
+  "appr": false,
+  "src": "Company case study",
+  "posted": "",
+  "added": "2026-10-23",
+  "url": ""
+ },
+ {
+  "id": "cancer-patient-care-coordinator",
+  "t": "Coordinate a family member's medical records and care",
+  "s": "A family gave a relative's records to an agent, which caught a medication schedule error and a transcription mistake.",
+  "did": "The family used the agent as a coordinator across doctors, records and test results.",
+  "how": "It flagged a wrong pain-medication schedule and an error in genetic test markers, which changed the treatment plan.",
+  "out": "Worked",
+  "ind": [
+   "healthcare"
+  ],
+  "cat": "health",
+  "sub": "Medical records, bills & care",
+  "roles": [
+   "individual"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "Custom",
+  "eff": 3,
+  "risk": [
+   "sensitive"
+  ],
+  "appr": true,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-15",
+  "url": ""
+ },
+ {
+  "id": "international-grants-airtable",
+  "t": "Collect grant listings from many countries",
+  "s": "A Zapier agent searches the web for grants in different countries and adds them to Airtable.",
+  "did": "The agent runs searches by country and program type, then writes each grant it finds as a row in Airtable.",
+  "how": "It works, but the user is still tuning which results to keep.",
+  "out": "Partial",
+  "ind": [
+   "government",
+   "professional-services"
+  ],
+  "cat": "research",
+  "sub": "Market & stock research",
+  "roles": [
+   "researcher",
+   "smb"
+  ],
+  "type": [
+   "workflow",
+   "research"
+  ],
+  "prod": "Zapier Agents",
+  "eff": 2,
+  "risk": [],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-17",
+  "url": ""
+ },
+ {
+  "id": "insurance-appeal-evidence",
+  "t": "Draft an evidence-backed insurance appeal",
+  "s": "ChatGPT helped build an employment insurance appeal that was accepted, and a home flooding appeal.",
+  "did": "The user gave ChatGPT the denial letter, policy terms and evidence, then built the appeal argument point by point.",
+  "how": "The employment insurance appeal was accepted.",
+  "out": "Worked",
+  "ind": [
+   "insurance"
+  ],
+  "cat": "money",
+  "sub": "Disputes & insurance claims",
+  "roles": [
+   "individual"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "ChatGPT",
+  "eff": 1,
+  "risk": [
+   "legal",
+   "sensitive"
+  ],
+  "appr": true,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-22",
+  "url": ""
+ },
+ {
+  "id": "safety-data-sheet-retrieval",
+  "t": "Find and parse chemical safety data sheets",
+  "s": "An app built with Manus finds the right SDS PDF online, downloads it, and turns it into structured data.",
+  "did": "Given a product name, the system searches for the safety data sheet, downloads the PDF, extracts the text and maps it to a fixed schema.",
+  "how": "The author built almost the whole app through Manus.",
+  "out": "Worked",
+  "ind": [
+   "manufacturing"
+  ],
+  "cat": "operations",
+  "sub": "Documents, decks & reports",
+  "roles": [
+   "nontech",
+   "smb"
+  ],
+  "type": [
+   "browser",
+   "coding"
+  ],
+  "prod": "Manus",
+  "eff": 3,
+  "risk": [],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-25",
+  "url": ""
+ }
+]

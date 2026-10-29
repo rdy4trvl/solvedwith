@@ -1,0 +1,34 @@
+# SolvedWith.ai — notes for Claude Code
+
+Owner: Doug (non-programmer; give numbered steps, time estimates, one next action).
+Site: static, GitHub Pages, custom domain solvedwith.ai (registered at Porkbun; email forwards problem@ and work@ live there — keep MX/TXT records).
+
+## Rules
+- All pages read `data/cases.json`. Never hard-code cases in HTML.
+- Summaries are always our own words. Never copy text from the source or from agentusecases.ai.
+- Industry is the primary way in. Every case needs >=1 industry slug, or `cross-industry`.
+- Category slugs never change once live; renames change labels only.
+- Doug reviews every case before go-live (phase 1b).
+
+## Case fields (data/cases.json)
+id (slug, permanent) · t (title <70 chars) · s (1–2 sentence summary) · did · how ·
+out (Worked | Partial | Failed | Not reported) · ind [industry slugs] · cat (category slug) · sub (subcategory) ·
+roles [role slugs] · type [agent-type slugs] · prod (product name or Custom) · eff (1–4) ·
+risk [risk slugs] · appr (bool, human approval step) · src (source badge) · url (original post) ·
+posted (YYYY-MM-DD or "") · added (YYYY-MM-DD)
+
+## Slugs (must match index.html)
+Industries: real-estate, healthcare, insurance, financial-services, accounting, legal, retail-ecommerce,
+restaurants-hospitality, construction-trades, manufacturing, education, marketing-agencies, media-publishing,
+saas-tech, professional-services, recruiting, government, cross-industry
+Categories: money, shopping, travel, health, home, assistant, career, hobbies, sales, marketing, support,
+finance, hr, operations, content, research, teaching, software, agent-building, science
+Roles: individual, smb, exec, marketer, sales, support, bookkeeper, recruiter, teacher, researcher, lawyer,
+clinic, realtor, seller, developer, nontech, investor
+Agent types: coding, browser, personal, workflow, voice, chat, research
+Risks: money, accounts, messages, public, sensitive, data, code, legal
+Effort: 1 Try it now · 2 Short setup · 3 Weekend project · 4 Developer build
+Source badges: Reddit, X, Hacker News, Bluesky, GitHub, YouTube, LinkedIn, Blog, News media, Company case study, Community submission
+
+## Phases
+1a private setup (now) → 1b go live with ~300 reviewed cases + weekly newsletter → 2 quiz → 3 YouTube/LinkedIn sources + daily scanner
