@@ -178,7 +178,7 @@ function casePageHTML(c){
     ${ourRead(c)}
     <section class="sec">
       <div class="tryhead"><h2>Try it by SolvedWith.ai</h2><button class="btn ghost" id="copy">Copy prompt</button></div>
-      <p class="note">A starting prompt we build from this case. Not the original poster's wording.</p>
+      <p class="note">A starting prompt we built from this case. Not the original poster's wording.</p>
       <pre class="prompt" id="tp">${esc(promptFor(c))}</pre></section>
   </article>
   <aside class="side">
