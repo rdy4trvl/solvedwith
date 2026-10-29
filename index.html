@@ -141,6 +141,9 @@ const GROUPS=[
 ["Business",[["sales","Sales & Lead Generation"],["marketing","Marketing, SEO & Social"],["support","Customer Support"],["finance","Finance & Bookkeeping"],["hr","HR & Recruiting"],["operations","Operations & Admin"]]],
 ["Creative, Research & Learning",[["content","Content & Media"],["research","Research & Knowledge"],["teaching","Teaching & Learning"]]],
 ["Building & Tech",[["software","Software Development"],["agent-building","Agent Building & Orchestration"],["science","Security, Science & Hardware"]]]];
+const byLabel=(a,b)=>a[1].localeCompare(b[1]);
+INDUSTRIES.sort((a,b)=>a[0]==="cross-industry"?1:b[0]==="cross-industry"?-1:byLabel(a,b));
+GROUPS.forEach(g=>g[1].sort(byLabel));
 const CATS=Object.fromEntries(GROUPS.flatMap(g=>g[1]));
 const IND=Object.fromEntries(INDUSTRIES);
 const ROLES={individual:"Individual",smb:"Small-business owner",exec:"Executive / manager",marketer:"Marketer",sales:"Sales / BD",support:"Support lead",bookkeeper:"Finance / bookkeeper",recruiter:"Recruiter / HR",teacher:"Teacher",researcher:"Researcher",lawyer:"Lawyer",clinic:"Healthcare staff",realtor:"Real estate pro",seller:"E-commerce seller",developer:"Developer",nontech:"Non-technical builder",investor:"Investor"};
