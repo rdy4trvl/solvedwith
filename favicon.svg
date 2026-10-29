@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<style>.m{stroke:#0E6A4E}@media (prefers-color-scheme:dark){.m{stroke:#5FCB9F}}</style>
+<g class="m" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="32" cy="32" r="24" stroke-dasharray="125.7 25.1" transform="rotate(-12 32 32)"/>
+<path d="M19 33.5 28.5 43 52 14"/>
+</g>
+</svg>

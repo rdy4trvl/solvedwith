@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SolvedWith.ai</title><meta name="description" content="Real AI agent use cases by industry: what it took, what it can touch, and whether it worked.">
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -37,8 +38,7 @@ h3{font-size:17px;font-weight:600}
 header.top{border-bottom:1px solid var(--line);background:var(--surface)}
 header.top .wrap{display:flex;align-items:center;gap:20px;padding-block:14px;flex-wrap:wrap}
 .logo{font:700 22px var(--display);color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo .mark{width:24px;height:24px;border-radius:6px;background:var(--solved);display:grid;place-items:center}
-.logo .mark svg{width:15px;height:15px}
+.logo .mark{width:30px;height:30px;flex:none;overflow:visible}
 .logo .tld{color:var(--solved)}
 nav.main{display:flex;gap:16px;flex-wrap:wrap;margin-left:auto}
 nav.main a{color:var(--muted);text-decoration:none;font-weight:500}
@@ -53,15 +53,17 @@ main{padding-block:28px 64px;display:grid;gap:40px}
 .sec{display:grid;gap:16px}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .sec-head p{margin:0;color:var(--muted)}
-.ind-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.ind{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none}
+.ind-grid{--row:62px;--gap:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--gap);grid-auto-rows:var(--row)}
+.ind-grid.scroller{max-height:calc(var(--row)*2.5 + var(--gap)*2);overflow-y:auto;padding-right:6px}
+.ind-grid.scroller:focus-visible{outline:2px solid var(--solved);outline-offset:4px}
+.ind{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;font-size:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none}
 .ind:hover{border-color:var(--solved)}
 .ind .n{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.ind span:first-child{line-height:1.25}
 .ind.thin .n::after{content:" · thin";color:var(--risk)}
 .ind.any{background:var(--solved-soft);border-color:var(--solved);font-weight:600}
 .ind.any .n{color:var(--ink)}
-.ind-grid.clamped .ind:nth-child(n+10):not(.any){display:none}
-.more{justify-self:start}
+.any-row{margin-top:10px;display:grid}
 .panel{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:20px}
 .rail{display:grid;gap:16px;align-content:start}
 .jump details{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:12px 14px}
@@ -74,6 +76,8 @@ main{padding-block:28px 64px;display:grid;gap:40px}
 .jump a[aria-current="page"]{color:var(--solved);font-weight:600}
 .groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
 .group{display:grid;gap:8px;align-content:start}
+.group>.eyebrow{font:700 12px var(--mono);letter-spacing:.1em;color:var(--ink);padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.jump li.g>.eyebrow{font-weight:700;color:var(--ink)}
 .group ul{list-style:none;padding:0;margin:0;display:grid;gap:2px}
 .group a{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
 .group a:hover{color:var(--solved)}
@@ -94,7 +98,8 @@ main{padding-block:28px 64px;display:grid;gap:40px}
 .effort i{width:6px;height:10px;border-radius:2px;background:var(--line);display:inline-block}
 .effort i.on{background:var(--solved)}
 .layout{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
-@media (max-width:820px){.layout{grid-template-columns:1fr}}
+@media (max-width:820px){.layout{grid-template-columns:1fr}
+.ind-grid{grid-auto-rows:auto}.ind-grid.scroller{max-height:none;overflow:visible;padding-right:0}}
 .filters{display:grid;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
 .filters label{display:grid;gap:4px;font:500 13px var(--body);color:var(--muted)}
 .filters select{font:14px var(--body);padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
@@ -136,7 +141,7 @@ footer .wrap{padding-block:20px;display:flex;gap:16px;flex-wrap:wrap;justify-con
 
 <div class="banner"><div class="wrap">Layout prototype · 28 sample cases summarized from the review · source badges, dates and links are placeholders until tagging</div></div>
 <header class="top"><div class="wrap">
-  <a class="logo" href="#home"><span class="mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--surface)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SolvedWith<span class="tld">.ai</span></a>
+  <a class="logo" href="#home"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="var(--solved)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24" stroke-dasharray="125.7 25.1" transform="rotate(-12 32 32)"/><path d="M19 33.5 28.5 43 52 14"/></g></svg>SolvedWith<span class="tld">.ai</span></a>
   <nav class="main"><a href="#industries">Industries</a><a href="#categories">Categories</a><a href="#all">All cases</a><a href="#newsletter">Newsletter</a></nav>
 </div></header>
 <div class="wrap"><main id="app"></main></div>
@@ -248,24 +253,24 @@ function wireNews(pre){
   $("#nl-form").onsubmit=e=>{e.preventDefault();const m=$("#nl-msg");m.className="ok";m.textContent=`Prototype only: signup isn't connected yet. This would subscribe ${$("#nl-email").value} to ${picked.size?[...picked].map(k=>IND[k]).join(", "):"every industry"}.`;};
 }
 function home(){
-  const indTiles=INDUSTRIES.map(([k,v])=>{const n=count(c=>c.ind.includes(k));return `<a class="ind${k==="cross-industry"?' any':''}${n<1?' thin':''}" href="#i-${k}"><span>${esc(v)}</span><span class="n">${n}</span></a>`;}).join('');
+  const tile=([k,v],extra)=>{const n=count(c=>c.ind.includes(k));return `<a class="ind${extra}${n<1?' thin':''}" href="#i-${k}"><span>${esc(v)}</span><span class="n">${n}</span></a>`;};
+  const indTiles=INDUSTRIES.filter(([k])=>k!=="cross-industry").map(i=>tile(i,'')).join('');
+  const anyTile=tile(INDUSTRIES.find(([k])=>k==="cross-industry"),' any');
   const groups=GROUPS.map(([g,cats])=>`<div class="group"><span class="eyebrow">${g}</span><ul>${cats.map(([k,v])=>`<li><a href="#c-${k}">${esc(v)}<span>${count(c=>c.cat===k)}</span></a></li>`).join('')}</ul></div>`).join('');
   const newest=[...C].sort((a,b)=>b.added.localeCompare(a.added)).slice(0,6);
   const easy=C.filter(c=>c.eff===1&&c.risk.length<=1).slice(0,6);
   $("#app").innerHTML=`
   <section class="hero"><span class="eyebrow">${C.length} real cases · ${INDUSTRIES.length-1} industries · 20 categories</span>
-    <h1>See what's already been solved with AI agents in your industry</h1>
+    <h1>What AI agents actually do in your industry</h1>
     <p>Real examples of people handing work to AI agents, with what it took to set up, what it can touch, and whether it worked.</p>
     <form class="search" id="hs"><input id="hs-q" type="search" placeholder="Try invoices, appointments, SEO…" aria-label="Search cases"><button class="btn" type="submit">Search</button></form>
   </section>
-  <section class="sec" id="industries"><div class="sec-head"><h2>Browse by industry</h2><p>Cases that only apply to your field, then the ones that work anywhere.</p></div><div class="ind-grid clamped" id="ind-grid">${indTiles}</div><button type="button" class="btn ghost more" id="ind-more" aria-expanded="false">Show all ${INDUSTRIES.length} industries</button></section>
+  <section class="sec" id="industries"><div class="sec-head"><h2>Browse by industry</h2><p>Cases that only apply to your field, then the ones that work anywhere.</p></div><div class="ind-grid scroller" id="ind-grid" tabindex="0" role="group" aria-label="All industries, scroll for more">${indTiles}</div><div class="any-row">${anyTile}</div></section>
   <section class="sec" id="categories"><div class="sec-head"><h2>Browse by category</h2></div><div class="panel"><div class="groups">${groups}</div></div></section>
   <section class="sec"><div class="sec-head"><h2>New this week</h2><a href="#all">All cases</a></div><div class="cards">${newest.map(card).join('')}</div></section>
   <section class="sec"><div class="sec-head"><h2>Easy wins</h2><p>Under 15 minutes to try, with little or no risk.</p></div><div class="cards">${easy.map(card).join('')}</div></section>
   ${newsletter()}`;
   $("#hs").onsubmit=e=>{e.preventDefault();resetF({q:$("#hs-q").value.trim()});location.hash="all";};
-  const ig=$("#ind-grid"),im=$("#ind-more");
-  im.onclick=()=>{const open=!ig.classList.toggle("clamped");im.setAttribute("aria-expanded",open);im.textContent=open?"Show fewer industries":`Show all ${INDUSTRIES.length} industries`;};
   wireNews();
 }
 function listPage(kind,key){
