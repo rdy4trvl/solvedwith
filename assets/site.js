@@ -19,6 +19,7 @@ const ROLES={individual:"Individual",smb:"Small-business owner",exec:"Executive 
 const TYPES={coding:"Coding agent",browser:"Browser / computer-use",personal:"Always-on personal agent",workflow:"Workflow automation",voice:"Voice / phone agent",chat:"Chat assistant + apps",research:"Deep research agent"};
 const RISKS={money:"Spends money",accounts:"Accesses financial accounts",messages:"Sends messages as you",public:"Posts publicly",sensitive:"Handles sensitive personal data",data:"Changes or deletes data",code:"Runs code on your machine",legal:"Legal or tax consequences"};
 const U={home:"/",all:"/all/",ind:k=>`/industry/${k}/`,cat:k=>`/category/${k}/`,case:id=>`/case/${id}/`};
+const COSTS={free:"Free",low:"Under $20/mo",mid:"$20–100/mo",usage:"Usage-based, scales with volume",ent:"Enterprise / custom pricing"};
 const EFFORT={1:["Try it now","Under 15 minutes; a prompt in a chat or browser agent"],2:["Short setup","Under 1 hour; connect accounts, no code"],3:["Weekend project","A few hours; scripts, schedules or self-hosting"],4:["Developer build","Multiple days; real code and deployment"]};
 
 // Sample cases, summarized in our own words. Source/date values are placeholders.
@@ -27,7 +28,7 @@ let C=[];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const count=(f)=>C.filter(f).length;
-const effortHTML=n=>`<span class="effort" title="${EFFORT[n][0]}">${[1,2,3,4].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
+const effortHTML=n=>`<span class="effort e${n}" title="${EFFORT[n][0]}">${[1,2,3,4].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
 const fmtDate=d=>d?new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"Date unknown";
 
 function card(c){
@@ -52,12 +53,12 @@ function applyF(list){
   return r;
 }
 const opt=(obj,sel,all)=>`<option value="">${all}</option>`+Object.entries(obj).map(([k,v])=>`<option value="${k}"${sel===k?' selected':''}>${esc(v)}</option>`).join('');
-function jumpNav(cur){
+function jumpNav(cur,openInd=true){
   const li=(h,label,on)=>`<li><a href="${h}"${on?' aria-current="page"':''}>${esc(label)}</a></li>`;
   const inds=INDUSTRIES.map(([k,v])=>li(U.ind(k),v,cur===`i-${k}`)).join('');
   const cats=GROUPS.map(([g,cs])=>`<li class="g"><span class="eyebrow">${esc(g)}</span></li>`+cs.map(([k,v])=>li(U.cat(k),v,cur===`c-${k}`)).join('')).join('');
   return `<nav class="jump" aria-label="Browse everything">
-    <details open><summary>All industries</summary><ul>${inds}</ul></details>
+    <details${openInd?" open":""}><summary>All industries</summary><ul>${inds}</ul></details>
     <details><summary>All categories</summary><ul>${cats}</ul></details></nav>`;
 }
 function filterBar(lockInd){
@@ -174,13 +175,16 @@ function casePageHTML(c){
     <h1>${esc(c.t)}</h1><p style="font-size:17px;color:var(--muted)">${esc(c.s)}</p>
     <section class="sec"><h2>What they did</h2><p>${esc(c.did)}</p></section>
     <section class="sec"><h2>How it went</h2><p>${esc(c.how)}</p></section>
+    ${ourRead(c)}
     <section class="sec"><h2>Try it</h2><pre class="prompt" id="tp">${esc(promptFor(c))}</pre><div><button class="btn ghost" id="copy">Copy prompt</button></div></section>
   </article>
   <aside class="side">
     <div class="box"><h3>Setup</h3><dl>
       <dt>Effort</dt><dd>${effortHTML(c.eff)} ${EFFORT[c.eff][0]}<br><span class="note">${EFFORT[c.eff][1]}</span></dd>
+      <dt>Cost</dt><dd>${c.cost?esc(COSTS[c.cost]||c.cost):"Not reported"}</dd>
       <dt>Agent type</dt><dd>${c.type.map(t=>TYPES[t]).join(", ")}</dd>
       <dt>Product</dt><dd>${esc(c.prod)}</dd>
+      <dt>Before you start</dt><dd>${c.pre&&c.pre.length?c.pre.map(esc).join(" · "):"Nothing beyond the product above"}</dd>
       <dt>For</dt><dd>${c.roles.map(r=>ROLES[r]).join(", ")}</dd>
       <dt>Category</dt><dd><a href="${U.cat(c.cat)}">${esc(CATS[c.cat])}</a> · ${esc(c.sub)}</dd></dl></div>
     <div class="box"><h3>What it can touch</h3>
@@ -191,9 +195,20 @@ function casePageHTML(c){
       <dt>Posted</dt><dd>${fmtDate(c.posted)}</dd>
       <dt>Added</dt><dd>${fmtDate(c.added)}</dd></dl>
       <p class="note">Original link is added during tagging.</p></div>
-    ${jumpNav("i-"+c.ind[0])}
+    ${jumpNav("i-"+c.ind[0],false)}
   </aside></div>
   ${related.length?`<section class="sec"><h2>Related cases</h2><div class="cards">${related.map(card).join('')}</div></section>`:''}`;
+}
+function ourRead(c){
+  const lim=c.limits||[], ide=c.ideas||[];
+  if(!lim.length&&!ide.length)return "";
+  const list=a=>`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
+  return `<section class="sec read">
+    <div class="sec-head"><h2>Our read</h2><span class="eyebrow">Our analysis${c.evaluated?` · ${fmtDate(c.evaluated)}`:""}</span></div>
+    <p class="note">Not from the source. Our own assessment of the approach, which may date as the tools change.</p>
+    ${lim.length?`<div><h3>Where it falls down</h3>${list(lim)}</div>`:""}
+    ${ide.length?`<div><h3>Worth trying next</h3>${list(ide)}</div>`:""}
+  </section>`;
 }
 function wireCasePage(){
   $("#copy").onclick=async()=>{const t=$("#tp").textContent;try{await navigator.clipboard.writeText(t);$("#copy").textContent="Copied";}catch(e){const r=document.createRange();r.selectNodeContents($("#tp"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("#copy").textContent="Selected: press Ctrl+C";}};

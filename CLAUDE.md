@@ -20,7 +20,14 @@ id (slug, permanent) · t (title <70 chars) · s (1–2 sentence summary) · did
 out (Worked | Partial | Failed | Not reported) · ind [industry slugs] · cat (category slug) · sub (subcategory) ·
 roles [role slugs] · type [agent-type slugs] · prod (product name or Custom) · eff (1–4) ·
 risk [risk slugs] · appr (bool, human approval step) · src (source badge) · url (original post) ·
-posted (YYYY-MM-DD or "") · added (YYYY-MM-DD)
+posted (YYYY-MM-DD or "") · added (YYYY-MM-DD) ·
+cost (cost slug) · pre [short prerequisite strings] ·
+limits [2-3 bullets] · ideas [2-3 bullets] · evaluated (YYYY-MM-DD)
+
+`limits` and `ideas` are OUR analysis, not the source's. They render in a separate "Our read" block
+that says so. Write them about the approach, never about a named vendor's competence. Stamp
+`evaluated` with the date written, since both go stale as the tools change. Doug reviews these like
+any other field - they carry more risk than a summary does.
 
 ## Slugs (must match index.html)
 Industries: real-estate, healthcare, insurance, financial-services, accounting, legal, retail-ecommerce,
@@ -33,6 +40,7 @@ clinic, realtor, seller, developer, nontech, investor
 Agent types: coding, browser, personal, workflow, voice, chat, research
 Risks: money, accounts, messages, public, sensitive, data, code, legal
 Effort: 1 Try it now · 2 Short setup · 3 Weekend project · 4 Developer build
+Cost: free · low (under $20/mo) · mid ($20-100/mo) · usage (scales with volume) · ent (enterprise)
 Source badges: Reddit, X, Hacker News, Bluesky, GitHub, YouTube, LinkedIn, Blog, News media, Company case study, Community submission
 
 ## Phases

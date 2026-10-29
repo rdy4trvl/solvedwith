@@ -28,7 +28,23 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-26",
-  "url": ""
+  "url": "",
+  "cost": "usage",
+  "pre": [
+   "A pharmacy system the agent can query",
+   "A phone line you can route",
+   "A vendor agreement that covers patient data"
+  ],
+  "limits": [
+   "Identifying a caller by voice is the weak point: accents, background noise and bad lines all raise the chance of matching the wrong patient record.",
+   "380 refills is self-reported with no error rate beside it, so there is no way to tell how many were wrong.",
+   "No approval step is described, so a misheard drug or dose reaches the prescriber queue unchecked."
+  ],
+  "ideas": [
+   "Require a second identifier, such as date of birth, before any refill is submitted.",
+   "Log every call where the match was low-confidence and review those weekly rather than sampling at random."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "real-estate-site-visits",
@@ -59,7 +75,23 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-19",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "An n8n instance, cloud or self-hosted",
+   "CRM and calendar API access",
+   "A mailbox the agent can send from"
+  ],
+  "limits": [
+   "No conversion figures were shared, so there is no evidence booked viewings became deals.",
+   "It emails leads with no approval step, so a misread question goes out in the agency's name.",
+   "Double-booking is the usual failure here, when two leads are offered the same slot at once."
+  ],
+  "ideas": [
+   "Hold slots provisionally and confirm only once the lead replies.",
+   "Compare no-show rates against manually booked viewings to see whether speed costs quality."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "reconcile-supplier-invoices",
@@ -93,7 +125,23 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-24",
-  "url": ""
+  "url": "",
+  "cost": "mid",
+  "pre": [
+   "Zoho Books API credentials",
+   "Supplier invoices in a predictable format",
+   "Somewhere to host the service"
+  ],
+  "limits": [
+   "It places supplier orders and raises client invoices with no approval step, so a matching error becomes a real financial transaction.",
+   "Invoice matching is brittle when suppliers change their layouts, which they do without warning.",
+   "\"Hours now runs on its own\" says nothing about how often the matches are wrong."
+  ],
+  "ideas": [
+   "Hold any order above a value threshold for a person to release.",
+   "Reconcile against the bank feed monthly to catch silent mismatches."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "dealership-sms-support",
@@ -123,7 +171,23 @@
   "src": "Company case study",
   "posted": "2026-09-14",
   "added": "2026-10-23",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A Make account",
+   "An SMS platform with an API",
+   "An agreed definition of what counts as negative"
+  ],
+  "limits": [
+   "Sentiment is a crude proxy for urgency: a calmly worded message about a safety fault reads as routine.",
+   "18,000 of 47,000 auto-closed is a volume figure, not evidence that none of those customers needed a person.",
+   "Short replies and sarcasm are exactly where sentiment scoring is least reliable."
+  ],
+  "ideas": [
+   "Sample closed conversations weekly and measure how many should have been escalated.",
+   "Route on safety and legal keywords regardless of what the sentiment score says."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "screen-job-candidates",
@@ -153,7 +217,23 @@
   "src": "Company case study",
   "posted": "",
   "added": "2026-10-23",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A Make account",
+   "An ATS with an API",
+   "A written scoring rubric"
+  ],
+  "limits": [
+   "Automated resume scoring carries real discrimination risk, and in several jurisdictions it is regulated.",
+   "This was published as a vendor how-to with no real results, so the scoring quality is untested.",
+   "Scoring against a job description rewards people who write resumes well, which is not the same as doing the job well."
+  ],
+  "ideas": [
+   "Keep every score with the reasoning behind it, so a rejected candidate's file can be audited.",
+   "Run it alongside human screening for a month and compare who each would have advanced."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "teacher-report-marking",
@@ -183,7 +263,22 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-24",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A written marking rubric",
+   "A Claude subscription"
+  ],
+  "limits": [
+   "Consistency across a large batch is the open question: the same work can score differently in different sessions.",
+   "Student work is sensitive, and school policy may not allow putting it into a third-party tool at all.",
+   "Time saved is reported; agreement with the teacher's own marks is not."
+  ],
+  "ideas": [
+   "Re-mark a sample blind and measure how far the scores drift.",
+   "Ask for the rubric line behind every mark, so a disagreement can be traced."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "split-homework-scans",
@@ -213,7 +308,23 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-18",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A class roster file",
+   "A scanner that outputs one PDF",
+   "Claude Code"
+  ],
+  "limits": [
+   "Reading handwritten names is the failure point, and similar names in one class make it worse.",
+   "A misfiled page is logged as another student's work, which is easy to miss and awkward to unpick.",
+   "There is no approval step, so mistakes reach the tracker directly."
+  ],
+  "ideas": [
+   "Flag low-confidence name matches for a quick visual check instead of filing them.",
+   "Reconcile the tracker against the scanned page count to catch anything dropped."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "redline-word-tracked-changes",
@@ -242,7 +353,22 @@
   "src": "X",
   "posted": "2026-10-17",
   "added": "2026-10-18",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "Word with Claude connected",
+   "The contract and the reviewer comments"
+  ],
+  "limits": [
+   "One lawyer's judgement on two sections is not evidence that it holds across contract types.",
+   "A redline shows the changes made; the change that should have been made and was not is invisible.",
+   "Interactions between clauses across a long agreement are where this is weakest."
+  ],
+  "ideas": [
+   "Ask separately what it chose not to change, and why.",
+   "Check the output against the firm's precedent clauses rather than judging the edit on its own."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "hospital-bill-medicare-analysis",
@@ -272,7 +398,21 @@
   "src": "X",
   "posted": "",
   "added": "2026-10-15",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "The itemised bill, with billing codes"
+  ],
+  "limits": [
+   "The $163,000 came from one negotiation: the analysis created leverage, but the outcome was the hospital's decision.",
+   "Medicare rates are a benchmark, not a price a private payer is obliged to accept.",
+   "A misread billing code sends the whole comparison off, and codes are easy to transcribe wrong."
+  ],
+  "ideas": [
+   "Spot-check a sample of codes against the published fee schedule before relying on the table.",
+   "Ask which charges are most often reduced in negotiation, not only where the gap is largest."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "us-taxes-from-1099s",
@@ -304,7 +444,22 @@
   "src": "Blog",
   "posted": "",
   "added": "2026-10-22",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "All 1099s and brokerage statements",
+   "A record of expenses"
+  ],
+  "limits": [
+   "Matching a professional once, on one return, is not evidence that it generalises to other situations.",
+   "Cost basis and wash sales on brokerage statements are where this most often goes wrong.",
+   "You remain liable for the filing regardless of what produced the numbers."
+  ],
+  "ideas": [
+   "Have it show the calculation line by line so each figure can be checked against the form.",
+   "Run last year's return, where the answer is already known, as a test."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "meta-ad-campaigns-newsletter",
@@ -336,7 +491,23 @@
   "src": "Blog",
   "posted": "",
   "added": "2026-10-17",
-  "url": ""
+  "url": "",
+  "cost": "usage",
+  "pre": [
+   "Meta Ads API access",
+   "A funded ad account",
+   "A spend cap you are willing to lose"
+  ],
+  "limits": [
+   "It spends real money and posts publicly with no approval step, which is the riskiest combination on this site.",
+   "Cost per subscriber is not reported, so there is no way to know whether 50 variants beat one good ad.",
+   "Automated creative can breach ad policy, and that risks the whole account rather than one campaign."
+  ],
+  "ideas": [
+   "Set the hard spend cap at the ad account level, not inside the agent.",
+   "Hold creative for review before it goes live; the cost is a short delay."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "technical-seo-code-fixes",
@@ -364,7 +535,22 @@
   "src": "Blog",
   "posted": "2026-10-20",
   "added": "2026-10-27",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A site the agent can crawl",
+   "Access to make the code changes"
+  ],
+  "limits": [
+   "The issues it found are easy to verify; the issues it missed are invisible.",
+   "Ranking by likely impact is a guess at how search engines weight things, not a measurement.",
+   "Generated fixes still need testing: a wrong canonical tag does more damage than a missing one."
+  ],
+  "ideas": [
+   "Run it against a site whose problems you already know, to measure what it misses.",
+   "Apply fixes in small batches so any ranking change can be attributed."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "reorder-low-stock",
@@ -395,7 +581,23 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-19",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "Stock levels in a system that can be queried",
+   "Reorder thresholds per product",
+   "Supplier email addresses"
+  ],
+  "limits": [
+   "It emails real orders with no approval step, so a bad stock count becomes a real purchase.",
+   "Fixed thresholds do not understand seasonality, so it over-orders after an unusual week.",
+   "\"Stockouts stopped\" says nothing about whether stock on hand rose and tied up cash."
+  ],
+  "ideas": [
+   "Hold orders above a value for release and let the rest go.",
+   "Track stock turn alongside stockouts, so the fix is not simply more inventory."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "freshdesk-support-tickets",
@@ -425,7 +627,22 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-23",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "Freshdesk API access",
+   "A body of past tickets to learn from"
+  ],
+  "limits": [
+   "The reported failure was knowing when not to answer, which is the hard part of support automation.",
+   "Past tickets teach it what was said before, including the answers that were wrong.",
+   "Draft-and-review saves less than it looks once a person reads every draft."
+  ],
+  "ideas": [
+   "Let it answer only the ticket types where it scored well, and stay silent on the rest.",
+   "Measure how much drafts are edited before sending, to see where it actually helps."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "gorgias-support-disabled",
@@ -455,7 +672,22 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-27",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A helpdesk with an API",
+   "Policy documents that are actually accurate"
+  ],
+  "limits": [
+   "Promising what the store could not deliver is worse than no answer: it creates obligations.",
+   "Failures like this usually trace to missing grounding rather than a weak model.",
+   "Sending to customers with no approval step means mistakes land before anyone sees them."
+  ],
+  "ideas": [
+   "Ground every answer in the policy documents and refuse anything they do not cover.",
+   "Start in draft mode and enable sending only for question types with a clean record."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "contractor-back-office",
@@ -484,7 +716,22 @@
   "src": "X",
   "posted": "",
   "added": "2026-10-19",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "Contracts and certificates in one searchable place",
+   "Mail access"
+  ],
+  "limits": [
+   "One caught discrepancy is a good anecdote, not a detection rate.",
+   "What it misses stays silent, and an insurance gap only surfaces at claim time.",
+   "It reads a whole mailbox and file store, which is broad access for a back-office task."
+  ],
+  "ideas": [
+   "Run it over closed jobs where the problems are already known, to see what it misses.",
+   "Have it report expiring certificates on a schedule rather than only when asked."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "monday-to-xero",
@@ -516,7 +763,22 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-17",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "monday.com and Xero API access",
+   "A Make account"
+  ],
+  "limits": [
+   "It sends client invoices with no approval step, so a status changed at the wrong moment bills a client early.",
+   "Flagging what fails to match is good, but a confident wrong match is never flagged.",
+   "Accounting errors compound quietly and surface at period close."
+  ],
+  "ideas": [
+   "Hold the first invoice to each new client for a person to release.",
+   "Reconcile created documents against monday statuses weekly to catch false matches."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "bookkeeping-firm-workflows",
@@ -546,7 +808,23 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-26",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "An n8n instance",
+   "Credentials for client systems",
+   "The current workflows written down"
+  ],
+  "limits": [
+   "600 hours a year is the firm's own estimate, with no method shown.",
+   "Chasing documents automates well; the judgement in preparing entries does not.",
+   "Holding many clients' credentials in one automation concentrates the damage from any breach."
+  ],
+  "ideas": [
+   "Measure rework time too, since hours saved upstream can reappear as corrections.",
+   "Keep credentials separated per client so one failure does not expose the rest."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "sentry-to-fix-prs",
@@ -575,7 +853,23 @@
   "src": "Company case study",
   "posted": "",
   "added": "2026-10-22",
-  "url": ""
+  "url": "",
+  "cost": "mid",
+  "pre": [
+   "Sentry with root-cause analysis",
+   "A repo the agent can open PRs against",
+   "Cursor"
+  ],
+  "limits": [
+   "A fix that stops the error is not always the right fix; it can mask the cause instead.",
+   "Review quality drops when plausible-looking PRs arrive steadily.",
+   "It only sees errors Sentry caught, so silent failures stay untouched."
+  ],
+  "ideas": [
+   "Require a failing test in the PR that the fix makes pass.",
+   "Track how many of these PRs are later reverted."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "cms-to-markdown-migration",
@@ -605,7 +899,23 @@
   "src": "Blog",
   "posted": "",
   "added": "2026-10-22",
-  "url": ""
+  "url": "",
+  "cost": "mid",
+  "pre": [
+   "The repo and a CMS export",
+   "Cursor",
+   "Budget for model usage"
+  ],
+  "limits": [
+   "Three days and about $260 describes one migration; cost scales with site size and how messy the content is.",
+   "Content conversion loses things quietly, and embeds, redirects and metadata are the usual casualties.",
+   "Splitting broad changes across sub-agents makes review harder, because nobody saw the whole diff."
+  ],
+  "ideas": [
+   "Diff the rendered pages before and after, rather than reviewing the code changes.",
+   "Check that every old URL still resolves; migrations are where link equity is lost."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "hard-to-get-restaurant-table",
@@ -634,7 +944,21 @@
   "src": "X",
   "posted": "",
   "added": "2026-10-15",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "An account on the restaurant's booking platform"
+  ],
+  "limits": [
+   "Polling a booking site repeatedly can get the account rate-limited or banned.",
+   "It books with no approval step, so you are committed to whatever slot it finds.",
+   "Many booking platforms treat automation as a terms violation."
+  ],
+  "ideas": [
+   "Have it alert you when a slot opens instead of confirming outright.",
+   "Set the acceptable time window narrowly so it cannot book something you will not use."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "vc-founder-screening",
@@ -664,7 +988,23 @@
   "src": "Blog",
   "posted": "",
   "added": "2026-10-20",
-  "url": ""
+  "url": "",
+  "cost": "usage",
+  "pre": [
+   "A filings data source",
+   "The fund's thesis written down",
+   "A mailbox for outreach"
+  ],
+  "limits": [
+   "It drafts and sends outreach with no approval step, and a bad first email burns the relationship.",
+   "Screening against a thesis reinforces it: the fund stops seeing what sits outside the pattern.",
+   "Researching founders pulls personal information, which brings data protection obligations."
+  ],
+  "ideas": [
+   "Keep a log of the founders it screened out and review it quarterly for misses.",
+   "Hold the first message for a person while the hit rate is still unproven."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "anker-voice-support",
@@ -695,7 +1035,23 @@
   "src": "Company case study",
   "posted": "",
   "added": "2026-10-25",
-  "url": ""
+  "url": "",
+  "cost": "ent",
+  "pre": [
+   "Order and warranty systems with APIs",
+   "A voice platform",
+   "A decision on which languages to cover"
+  ],
+  "limits": [
+   "The figures come from a vendor case study and are the vendor's own, with no independent check.",
+   "Starting returns and warranty claims commits the company to money without an approval step.",
+   "Multilingual quality is rarely even, and the weakest language is usually the least measured."
+  ],
+  "ideas": [
+   "Publish containment and escalation rates per language rather than one blended number.",
+   "Cap the value of a return the agent can start on its own."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "post-meeting-follow-ups",
@@ -724,7 +1080,22 @@
   "src": "Company case study",
   "posted": "",
   "added": "2026-10-23",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A meeting transcription tool",
+   "Slack and calendar access"
+  ],
+  "limits": [
+   "This is a vendor demo with no real results, so the accuracy of the action items is unknown.",
+   "Transcripts miss what was agreed with a nod, and tend to invent structure that was not there.",
+   "It posts to Slack and schedules with no approval, so a wrong action item becomes a commitment."
+  ],
+  "ideas": [
+   "Post the action items to the organiser as a draft first.",
+   "Measure how many items get edited or deleted after posting."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "cancer-patient-care-coordinator",
@@ -753,7 +1124,22 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-15",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "Records and test results gathered in one place",
+   "Agreement from the family on what it may read"
+  ],
+  "limits": [
+   "Catching two errors is a strong anecdote, but the misses are invisible and the stakes here are clinical.",
+   "A confident wrong reading of a medication schedule is more dangerous than any other failure on this site.",
+   "It holds a complete medical history in one place, which is a serious concentration of sensitive data."
+  ],
+  "ideas": [
+   "Treat every flag as a question for the care team, never as an instruction.",
+   "Have it cite the document and line behind each flag so a clinician can check it quickly."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "international-grants-airtable",
@@ -783,7 +1169,22 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-17",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "An Airtable base",
+   "A list of countries and programme types"
+  ],
+  "limits": [
+   "It is still being tuned for which results to keep, which is the actual work.",
+   "Search-based collection misses grants that are poorly indexed, and those are often the least contested.",
+   "Closed and expired listings get collected alongside open ones unless dates are checked."
+  ],
+  "ideas": [
+   "Record where each grant was found, so sources that never yield can be dropped.",
+   "Check the deadline on write and discard anything already closed."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "insurance-appeal-evidence",
@@ -813,7 +1214,23 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-22",
-  "url": ""
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "The denial letter",
+   "The policy terms",
+   "Whatever evidence supports the claim"
+  ],
+  "limits": [
+   "One accepted appeal, in one jurisdiction, under one policy.",
+   "An argument can read as well-structured while resting on a misread clause.",
+   "Deadlines and required forms vary, and a strong argument filed late fails anyway."
+  ],
+  "ideas": [
+   "Ask it to quote the exact policy wording behind each argument, so the reading can be checked.",
+   "Have it name the weakest point and what evidence would strengthen it before you file."
+  ],
+  "evaluated": "2026-10-28"
  },
  {
   "id": "safety-data-sheet-retrieval",
@@ -842,6 +1259,21 @@
   "src": "Reddit",
   "posted": "",
   "added": "2026-10-25",
-  "url": ""
+  "url": "",
+  "cost": "usage",
+  "pre": [
+   "The product names to look up",
+   "Somewhere to store the PDFs and parsed output"
+  ],
+  "limits": [
+   "The right-looking sheet may be the wrong revision, and safety data changes between versions.",
+   "PDF extraction is uneven, and the sections that matter most are often the worst formatted.",
+   "There is no approval step on data people may rely on when handling chemicals."
+  ],
+  "ideas": [
+   "Capture the revision date and source URL with every sheet, and re-check on a schedule.",
+   "Validate the parsed schema against a set of known-good sheets before trusting it."
+  ],
+  "evaluated": "2026-10-28"
  }
 ]
