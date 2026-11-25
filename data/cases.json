@@ -48,5 +48,208 @@
   "status": "draft",
   "revnote": "",
   "revdate": ""
+ },
+ {
+  "id": "zendesk-custom-support-agents",
+  "t": "Let support teams build their own ticket agents",
+  "s": "Zendesk gave its customers a way to describe a support agent in plain English and connect it to their own tools. A million agent runs followed in seven weeks.",
+  "did": "A customer writes instructions in plain English and connects the agent to Zendesk actions and outside tools such as Jira and Google Drive. When a wave of similar tickets arrives, the agent files a Jira issue, posts to Slack so engineers see it, and tells affected customers the problem is being worked on. Once the fix ships it closes the tickets with a note on what went wrong. After each run it reviews its own work and saves what it learned as a skill.",
+  "how": "One million custom agent executions in the first seven weeks of early access, built by a five-person team in four months. Zendesk reports up to 80% lower human handle times and up to 10% more automated resolution for customers running them, and one customer merging duplicate tickets hit 99% accuracy in a pilot. The figures are Zendesk's own.",
+  "out": "Worked",
+  "ind": [
+   "saas-tech"
+  ],
+  "cat": "support",
+  "sub": "Tickets & email",
+  "roles": [
+   "support",
+   "exec",
+   "developer"
+  ],
+  "type": [
+   "workflow",
+   "chat"
+  ],
+  "prod": "Zendesk",
+  "eff": 2,
+  "risk": [
+   "messages",
+   "data"
+  ],
+  "appr": false,
+  "cost": "ent",
+  "url": "https://claude.com/customers/zendesk",
+  "pre": [
+   "A Zendesk account with the custom agent builder",
+   "The outside tools you want it to reach, such as Jira or Slack"
+  ],
+  "limits": [
+   "The 80% and 10% figures are given as “up to”, which is the best case across customers rather than the typical one.",
+   "Zendesk is publishing numbers about its own product, carried on its model vendor's site, with no independent check.",
+   "Customers choose which actions an agent may take, but no approval step on individual actions is described, so a wrongly triaged incident reaches customers before a person sees it."
+  ],
+  "ideas": [
+   "Start it on internal routing only, and let it message customers once you have seen the triage hold up.",
+   "Use the per-tool-call log to sample tickets it closed, not only the ones it escalated."
+  ],
+  "posted": "",
+  "added": "2026-11-24",
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": "",
+  "src": "Company case study"
+ },
+ {
+  "id": "carvana-alerts-to-pull-requests",
+  "t": "Turn production alerts into investigated pull requests",
+  "s": "Carvana's engineering teams let an agent pick up production alerts in Slack, trace the cause, and open a pull request a person then reviews.",
+  "did": "When an alert reaches Slack the agent works out which team owns it and posts a root-cause write-up in that team's format. Engineers can then ask it to open the pull request from its own analysis, which goes to human review before anything reaches production. Each team gets its own scoped identity and its own slice of the data warehouse, tickets, build history and code.",
+  "how": "Alerts in the retail science channel fell 56% once root causes were being fixed, and the wholesale platform team reports answers 65% faster. It replaced two homegrown Slackbots a small team had been maintaining. In one case it walked back its own first conclusion after a retry proved it wrong. The figures are Carvana's own.",
+  "out": "Worked",
+  "ind": [
+   "retail-ecommerce",
+   "cross-industry"
+  ],
+  "cat": "software",
+  "sub": "Incidents & monitoring",
+  "roles": [
+   "developer",
+   "exec"
+  ],
+  "type": [
+   "coding",
+   "workflow"
+  ],
+  "prod": "Claude Tag",
+  "eff": 3,
+  "risk": [
+   "code",
+   "data"
+  ],
+  "appr": true,
+  "cost": "usage",
+  "url": "https://claude.com/customers/carvana",
+  "pre": [
+   "Production alerts already arriving in Slack",
+   "Read access to repositories, tickets and build history",
+   "A code review process you already trust"
+  ],
+  "limits": [
+   "A 56% drop counts alerts, not fixes. Resolving a real cause and quietly silencing a noisy alert move that number the same way.",
+   "The page records it reversing its own conclusion once a retry proved it wrong, which is the failure mode to expect here: a confident wrong root cause that reads well.",
+   "The figures are Carvana's own, published by the vendor whose model it runs on."
+  ],
+  "ideas": [
+   "Track how many of these pull requests are later reverted, not just how many were opened.",
+   "Keep the per-team scoped access. One agent holding every team's data is a far larger blast radius for the same benefit."
+  ],
+  "posted": "",
+  "added": "2026-11-24",
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": "",
+  "src": "Company case study"
+ },
+ {
+  "id": "ad-campaigns-from-a-conversation",
+  "t": "Create and edit ad campaigns by talking to an agent",
+  "s": "Marketers pull normalised ad data and make campaign changes in conversation, with every new campaign created paused until someone approves it.",
+  "did": "A marketer asks a question, the agent calls the reporting tools and gets back normalised data carrying its source, timestamp and transformation logic, then recommends what to do next. Write actions cover Google Ads, Meta, Microsoft Advertising, TikTok, LinkedIn and Snapchat. New campaigns are created paused rather than live, and an approval page lists each change for a stakeholder to accept or reject.",
+  "how": "Active users of the connector grew 250% month over month on average since a February launch. A 25-person agency cut a 10-hour client report to 20 minutes, 17 of which went on pasting the finished data into the client's spreadsheet, and found no incorrect data points across a multi-week validation against live campaigns. The figures are the vendor's and that agency's own.",
+  "out": "Worked",
+  "ind": [
+   "marketing-agencies"
+  ],
+  "cat": "marketing",
+  "sub": "Paid ads & reporting",
+  "roles": [
+   "marketer",
+   "smb",
+   "exec"
+  ],
+  "type": [
+   "chat",
+   "workflow"
+  ],
+  "prod": "Supermetrics",
+  "eff": 2,
+  "risk": [
+   "money",
+   "accounts"
+  ],
+  "appr": true,
+  "cost": "mid",
+  "url": "https://claude.com/customers/supermetrics",
+  "pre": [
+   "A Supermetrics account with the Claude connector",
+   "Ad accounts you have permission to change"
+  ],
+  "limits": [
+   "“No incorrect data points” came from one 25-person agency checking its own work, not an independent audit, and errors nobody noticed are not errors that did not happen.",
+   "Paused-by-default and the approval page are what make the write actions safe. The version that monitors and acts on its own is described only as planned.",
+   "250% month-over-month growth measures how many people started using it, not whether the campaigns did better."
+  ],
+  "ideas": [
+   "Keep campaigns paused by default even after you trust it. The cost is one click; the downside is live spend.",
+   "Compare performance against campaigns you built by hand, since adoption and results are separate questions."
+  ],
+  "posted": "",
+  "added": "2026-11-24",
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": "",
+  "src": "Company case study"
+ },
+ {
+  "id": "food-bank-overtime-and-sourcing",
+  "t": "Cut driver overtime and food costs at a food bank",
+  "s": "A 46-staff food bank put an agent on shift patterns, purchasing and reporting. Biweekly overtime fell from 99 hours to 11.",
+  "did": "The team had the agent analyse routing and shift patterns, which led them to stagger start times so overtime stopped falling on the same few drivers. It also compared one partner agency's buying against the at-cost rates the food bank gets from retail partners, parsed exports from an older inventory system to show which mixed loads were worth sorting in house, and rebuilt a monthly reporting spreadsheet. Donor records are deliberately kept out of it.",
+  "how": "Biweekly driver and warehouse overtime fell from 99 hours to 11. The first partner agency to buy through the food bank now spends 40% less on food. A monthly reporting spreadsheet that took a week now takes about 30 seconds. Around 14 of the 46 staff hold seats. The figures are the food bank's own.",
+  "out": "Worked",
+  "ind": [
+   "cross-industry"
+  ],
+  "cat": "operations",
+  "sub": "Scheduling & logistics",
+  "roles": [
+   "smb",
+   "exec",
+   "nontech"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "Claude",
+  "eff": 2,
+  "risk": [
+   "data"
+  ],
+  "appr": true,
+  "cost": "low",
+  "url": "https://claude.com/customers/montgomery-county-food-bank",
+  "pre": [
+   "Exports from whatever systems you already run",
+   "Someone willing to ask awkward questions of the data"
+  ],
+  "limits": [
+   "99 hours to 11 is one organisation's figure over an unstated period, with no before-and-after service level beside it.",
+   "This is analysis a person then acts on rather than an agent doing the work, so the result depends on the staff member asking the right question.",
+   "The team keeps donor records out of the tool, which is the right call and also a real limit on what it can help with."
+  ],
+  "ideas": [
+   "Check the staggered shifts did not simply move the overtime onto a different team.",
+   "Run the same price comparison for the other partner agencies, since the first one found 40%."
+  ],
+  "posted": "",
+  "added": "2026-11-24",
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": "",
+  "src": "Company case study"
  }
 ]
