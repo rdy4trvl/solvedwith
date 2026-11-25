@@ -1311,5 +1311,53 @@
   "status": "approved",
   "revnote": "",
   "revdate": "2026-11-25"
+ },
+ {
+  "id": "store-support-agent-overpromised",
+  "t": "Answer store customer emails and chats with an agent",
+  "s": "An online store let an agent answer customer emails and chats. It made promises the store could not keep, and the merchant switched it off.",
+  "did": "The store put an agent in front of its email and chat queues, handling product, order and returns questions, with replies going to customers without a person checking them.",
+  "how": "Answers missed the question often enough to matter, and some committed the store to things it does not offer. The merchant switched it off rather than keep correcting it.",
+  "out": "Failed",
+  "ind": [
+   "retail-ecommerce"
+  ],
+  "cat": "support",
+  "sub": "Tickets & email",
+  "roles": [
+   "seller",
+   "support"
+  ],
+  "type": [
+   "chat"
+  ],
+  "prod": "Custom",
+  "eff": 2,
+  "risk": [
+   "messages"
+  ],
+  "appr": false,
+  "src": "Reddit",
+  "posted": "",
+  "added": "2026-10-27",
+  "url": "",
+  "cost": "low",
+  "pre": [
+   "A helpdesk with an API",
+   "Policy documents that are actually accurate"
+  ],
+  "limits": [
+   "Promising what the store could not deliver is worse than no answer: it creates obligations.",
+   "Failures like this usually trace to missing grounding rather than a weak model.",
+   "Sending to customers with no approval step means mistakes land before anyone sees them."
+  ],
+  "ideas": [
+   "Ground every answer in the policy documents and refuse anything they do not cover.",
+   "Start in draft mode and enable sending only for question types with a clean record."
+  ],
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  }
 ]
