@@ -121,7 +121,7 @@ function homeHTML(){
   </section>
   <section class="sec" id="industries"><div class="sec-head"><h2>Browse by industry</h2><p>Cases that only apply to your field, then the ones that work anywhere.</p></div><div class="ind-grid scroller" id="ind-grid" tabindex="0" role="group" aria-label="All industries, scroll for more">${indTiles}</div><div class="any-row">${anyTile}</div></section>
   <section class="sec" id="categories"><div class="sec-head"><h2>Browse by category</h2></div><div class="panel"><div class="groups">${groups}</div></div></section>
-  <section class="sec"><div class="sec-head"><h2>New this week</h2><a href="${U.all}">All cases</a></div><div class="cards">${newest.map(card).join('')}</div></section>
+  <section class="sec"><div class="sec-head"><h2>The Latest</h2><a href="${U.all}">All cases</a></div><div class="cards">${newest.map(card).join('')}</div></section>
   <section class="sec"><div class="sec-head"><h2>Easy wins</h2><p>Under 15 minutes to try, with little or no risk.</p></div><div class="cards">${easy.map(card).join('')}</div></section>
   ${newsletter()}`;
 }
