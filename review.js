@@ -39,6 +39,9 @@ function decide(id, decision, note) {
   const cases = read(CASES);
   const i = cases.findIndex(c => c.id === id);
   if (i < 0) return { ok: false, error: "no such case" };
+  if (decision === "approve" && !cases[i].url) {
+    return { ok: false, error: "Needs a source link before it can be approved" };
+  }
   const c = cases[i];
   const before = { status: c.status, revnote: c.revnote, revdate: c.revdate };
 
@@ -133,7 +136,7 @@ async function send(decision,note){
   const id=ids[at];
   const r=await (await fetch("/api/decide",{method:"POST",headers:{"content-type":"application/json"},
     body:JSON.stringify({id,decision,note})})).json();
-  if(!r.ok){busy=false;flash("Could not save","bad");return;}
+  if(!r.ok){busy=false;flash(r.error||"Could not save","bad");return;}
   flash({approve:"Approved",reject:"Rejected",flag:"Flagged for rewrite"}[decision],
         {approve:"ok",reject:"bad",flag:"warn"}[decision]);
   await load();

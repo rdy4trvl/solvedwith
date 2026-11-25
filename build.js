@@ -19,6 +19,8 @@ const PUBLISH_DRAFTS = true;
 const all = JSON.parse(fs.readFileSync("data/cases.json", "utf8"));
 const cases = PUBLISH_DRAFTS ? all : all.filter(c => c.status === "approved");
 if (cases.length !== all.length) console.log(`${all.length - cases.length} unapproved cases held back`);
+const unsourced = cases.filter(c => !c.url);
+if (unsourced.length) console.log(`WARNING: ${unsourced.length} case(s) with no source link: ${unsourced.map(c => c.id).join(", ")}`);
 setCases(cases);
 
 const clip = (s, n = 155) => {
@@ -45,7 +47,7 @@ function shell({ title, desc, url, page, key = "", body, js = true }) {
 <link rel="stylesheet" href="/assets/site.css">
 </head><body data-page="${page}"${key ? ` data-key="${esc(key)}"` : ""}>
 
-<div class="banner"><div class="wrap">Layout prototype · ${cases.length} sample cases summarized from the review · source badges, dates and links are placeholders until tagging</div></div>
+<div class="banner"><div class="wrap">Phase 1a · rebuilding the case set from verified sources · every case links to where it was reported</div></div>
 <header class="top"><div class="wrap">
   <a class="logo" href="/"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="var(--solved)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24" stroke-dasharray="125.7 25.1" transform="rotate(-12 32 32)"/><path d="M19 33.5 28.5 43 52 14"/></g></svg>SolvedWith<span class="tld">.ai</span></a>
   <nav class="main"><a href="/#industries">Industries</a><a href="/#categories">Categories</a><a href="${U.all}">All cases</a><a href="/#newsletter">Newsletter</a></nav>

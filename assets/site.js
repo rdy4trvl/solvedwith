@@ -197,7 +197,7 @@ function casePageHTML(c){
       <dt>From</dt><dd><span class="b">${c.src}</span></dd>
       <dt>Posted</dt><dd>${fmtDate(c.posted)}</dd>
       <dt>Added</dt><dd>${fmtDate(c.added)}</dd></dl>
-      <p class="note">Original link is added during tagging.</p></div>
+      ${c.url?`<p class="note"><a href="${esc(c.url)}" rel="nofollow noopener" target="_blank">Read the original report</a></p>`:`<p class="note">No source link yet.</p>`}</div>
     ${jumpNav("i-"+c.ind[0],false)}
   </aside></div>
   ${related.length?`<section class="sec"><h2>Related cases</h2><div class="cards">${related.map(card).join('')}</div></section>`:''}`;
