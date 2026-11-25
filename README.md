@@ -8,6 +8,9 @@ Real AI agent use cases, browsable by industry first, then by category.
 - `assets/site.js` — all page bodies and the browser behaviour. Edited once, used by both.
 - `assets/site.css` — all styling.
 - `build.js` — generates a real page per case, industry and category, plus `sitemap.xml` and `robots.txt`.
+- `validate.js` — checks every case against the rules. `build.js` runs it first and stops if it fails.
+- `review.js` — the review queue. Refuses to approve a case with no source link.
+- `data/unsourced.json` — cases withdrawn on 2026-11-24 for having no traceable source. Leads, not cases.
 - `CLAUDE.md` — briefing for Claude Code: tag lists, data fields, rules.
 - `CNAME`, `.nojekyll` — GitHub Pages config.
 

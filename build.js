@@ -5,6 +5,15 @@
 const fs = require("fs");
 const path = require("path");
 
+// Nothing gets built from data that breaks the rules. validate.js has already
+// printed what is wrong, so exit quietly rather than on a stack trace.
+try {
+  require("child_process").execSync("node validate.js", { stdio: "inherit" });
+} catch {
+  console.error("Build stopped: fix the problems above, then run node build.js again.");
+  process.exit(1);
+}
+
 const ORIGIN = "https://solvedwith.ai";
 // Crawlers reach every case through its own page and the sitemap, so the
 // pre-rendered lists only need enough to be useful without JS.

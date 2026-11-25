@@ -249,5 +249,5 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
 }
 if(typeof module!=="undefined"&&module.exports){
   module.exports={setCases:d=>{C=d;},setFilter:o=>{resetF(o);},homeHTML,listPageHTML,casePageHTML,promptFor,
-    INDUSTRIES,GROUPS,CATS,IND,U,esc};
+    INDUSTRIES,GROUPS,CATS,IND,ROLES,TYPES,RISKS,COSTS,EFFORT,U,esc};
 }

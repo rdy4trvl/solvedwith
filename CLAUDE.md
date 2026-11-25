@@ -55,5 +55,18 @@ Start from the source, never from the pattern. A plausible-sounding workflow is 
 someone actually published is. Capture `url`, `src` and `posted` at the moment you find it - going
 back for them later is what failed the first time.
 
+The loop, per case:
+1. Find a published report. Open it and read it. If you cannot open it, there is no case.
+2. Write `s`, `did` and `how` from what the page actually says. Where the page gives a number, use
+   that number; where it does not, say so rather than inventing a plausible one.
+3. Say who is talking. A vendor case study is `Company case study`, not `Blog`, and its figures are
+   self-reported - put that in `limits`.
+4. Tag against the slug lists below. Nothing outside them.
+5. `node validate.js` then `node build.js`, then `node review.js` for Doug.
+
+Smell tests for a case that is not real: round or suspiciously specific numbers with no page behind
+them, a workflow described in general terms with no company or person attached, a claim that matches
+a vendor's marketing copy more closely than anyone's experience.
+
 ## Phases
 1a private setup (now) → 1b go live with ~300 reviewed cases + weekly newsletter → 2 quiz → 3 YouTube/LinkedIn sources + daily scanner
