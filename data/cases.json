@@ -251,5 +251,155 @@
   "revnote": "",
   "revdate": "",
   "src": "Company case study"
+ },
+ {
+  "id": "alphaevolve-datacenter-scheduling",
+  "t": "Have an agent write a data centre scheduling heuristic",
+  "s": "Google DeepMind's AlphaEvolve proposes programs and scores them against automated evaluators. One heuristic it found has run in Google's cluster manager for over a year.",
+  "did": "Gemini models propose programs, automated evaluators verify, run and score each one, and a database of past programs seeds the next round. Pointed at Borg, the cluster manager behind Google's data centres, the loop produced a short scheduling heuristic. The same loop found a better way to split a large matrix multiplication and proposed a Verilog rewrite removing unnecessary bits from a TPU arithmetic circuit.",
+  "how": "The scheduling heuristic had been in production for over a year as of May 2025 and recovers on average 0.7% of Google's worldwide compute. The kernel change sped that kernel up by 23%, cutting Gemini's training time by 1%, and took kernel optimisation from weeks of expert effort to days of automated experiments.",
+  "out": "Worked",
+  "ind": [
+   "saas-tech",
+   "cross-industry"
+  ],
+  "cat": "software",
+  "sub": "Algorithm discovery",
+  "roles": [
+   "developer",
+   "researcher"
+  ],
+  "type": [
+   "coding"
+  ],
+  "prod": "AlphaEvolve",
+  "eff": 4,
+  "risk": [
+   "code"
+  ],
+  "appr": false,
+  "cost": "ent",
+  "src": "Blog",
+  "posted": "2025-05-14",
+  "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+  "pre": [
+   "A problem whose solution can be written as an algorithm",
+   "An automated evaluator that scores any candidate objectively",
+   "Access: at the time of writing this was an Early Access Program, not a product"
+  ],
+  "limits": [
+   "It needs an automated evaluator that can score a candidate objectively. The page says so, and that condition rules out most business problems before you start.",
+   "Google published this about its own infrastructure, and gives no compute cost, run time or failure rate, so there is no way to weigh 0.7% recovered against what the search cost to run.",
+   "The figures date from May 2025. “In production for over a year” is relative to then, not to now."
+  ],
+  "ideas": [
+   "Look for a place you already have a scorer - a benchmark, a cost model, a test suite. That, not the agent, is the hard part.",
+   "Separate what was deployed from what stayed research: the mathematics results are not described as running anywhere."
+  ],
+  "added": "2026-11-24",
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
+ },
+ {
+  "id": "agents-report-done-when-they-are-not",
+  "t": "Check whether an agent actually did what it said",
+  "s": "Microsoft and Hugging Face ran 507 business workflows twenty times each and graded the database afterwards. Most failures ended with the agent reporting success.",
+  "did": "Each task ran against an identical clean backend, and a deterministic judge compared the database state afterwards against the required end state rather than reading the agent's own summary. In the worked example a support agent made nine tool calls, read the refund policy correctly and established the customer did not qualify, then closed the ticket as resolved when the required state was on hold, because the carrier exception was still open.",
+  "how": "Across 121,680 trials on 12 models, 79,853 failed the state checks. Of those failures, 67.24% terminated cleanly, changed state and reported no error: the agent said it was done. Wrong field values appeared in 77.61% of failures, unintended extra effects in 43.30%. The strongest model passed 67.16% of tasks on a single attempt but only 47.53% on all twenty.",
+  "out": "Partial",
+  "ind": [
+   "cross-industry"
+  ],
+  "cat": "agent-building",
+  "sub": "Testing & evaluation",
+  "roles": [
+   "developer",
+   "exec",
+   "support"
+  ],
+  "type": [
+   "workflow"
+  ],
+  "prod": "ThinkingBox",
+  "eff": 3,
+  "risk": [
+   "data"
+  ],
+  "appr": false,
+  "cost": "free",
+  "src": "Blog",
+  "posted": "2026-10-03",
+  "url": "https://huggingface.co/blog/microsoft/thinkingbox",
+  "pre": [
+   "Tasks you can write a required end state for",
+   "A way to reset the backend between runs"
+  ],
+  "limits": [
+   "Every task is a synthetic reconstruction and the customers are not real. The authors say so themselves.",
+   "The cost figures are list-rate estimates rather than bills, and the authors call them a comparative index, not an invoice.",
+   "The authors recommend human approval on changes you cannot cheaply reverse, then note they have not measured whether it helps."
+  ],
+  "ideas": [
+   "Grade your own agents on the state they leave behind, not on their closing message. That single change is the whole finding.",
+   "Run the same task twenty times before trusting it. Passing once and passing every time differed by about twenty points even on the best model here."
+  ],
+  "added": "2026-11-24",
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
+ },
+ {
+  "id": "reproduce-research-papers-with-agents",
+  "t": "Reproduce research papers claim by claim with agents",
+  "s": "Around 1,200 people pointed coding agents at ICML papers for nineteen days. Half the papers examined had a claim verified; nearly a quarter had one falsified or contested.",
+  "did": "Organisers indexed every accepted paper and extracted its claims. Participants picked a paper, ran their own coding agent against it, and published a logbook with the write-up, code and artifacts. A separate judge model then re-read every logbook and gave per-claim verdicts, explicitly instructed to treat each logbook's own self-assessment as untrusted.",
+  "how": "In nineteen days, 6,816 logbooks covering 2,226 papers, with 35,908 claims judged. 51% of examined papers had at least one claim independently verified and 23% had at least one falsified or contested, including 242 papers where separate teams reached opposite verdicts on the same claims. The organisers report the most reliable results came from workflows where a human was steering.",
+  "out": "Partial",
+  "ind": [
+   "education",
+   "cross-industry"
+  ],
+  "cat": "research",
+  "sub": "Verification & replication",
+  "roles": [
+   "researcher",
+   "developer"
+  ],
+  "type": [
+   "coding",
+   "research"
+  ],
+  "prod": "Various",
+  "eff": 3,
+  "risk": [
+   "code"
+  ],
+  "appr": true,
+  "cost": "low",
+  "src": "Blog",
+  "posted": "2026-08-13",
+  "url": "https://huggingface.co/blog/icml-2026-open-reproductions",
+  "pre": [
+   "A paper whose code and artifacts were actually published",
+   "Compute to run the reproduction",
+   "A coding agent you are willing to steer"
+  ],
+  "limits": [
+   "The denominator behind the 51% is not stated. 1,103 papers is about half of the 2,226 attempted, so the base for that percentage is unclear.",
+   "Agents got stuck in loops, misread scale-dependent behaviour, and in one case built an entire falsification on a units mismatch that only a re-check caught.",
+   "Participants chose their own papers rather than sampling them, so this is not a representative read on the conference."
+  ],
+  "ideas": [
+   "Keep a person steering. The organisers attribute their most reliable results to that rather than to unattended runs.",
+   "Re-verify any falsification adversarially before acting on it. A confident wrong refutation is as easy to produce as a confident wrong confirmation."
+  ],
+  "added": "2026-11-24",
+  "evaluated": "2026-11-24",
+  "status": "draft",
+  "revnote": "",
+  "revdate": ""
  }
 ]
